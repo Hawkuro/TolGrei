@@ -1,3 +1,4 @@
+%Tekur inn hnit med musasmellum og skilar fylki med theim i rettri rod.
 function P = square(a,b,c,d)
     %Teiknum hnitakerfi
     clf;
@@ -17,23 +18,8 @@ function P = square(a,b,c,d)
             i = i+1;
         end
     end
-
-    if paralell(P,4) == 0;
-        %Setjum tha i retta rod
-        P = swapColums(P,1,minBy(P,1,1,4));
-        P = swapColums(P,2,maxBy(P,2,2,4));
-        P = swapColums(P,3,maxBy(P,1,3,4));
-        % 4. punkturinn er þegar a rettum stad
-    else
-       P = swapColums(P,1,minBy(P,1,1,4));
-       P = swapColums(P,2,minBy(P,1,2,4));
-       P = swapColums(P,1,minBy(P,2,1,2));
-       P = swapColums(P,3,maxBy(P,2,3,4));
-    end
     
-    %Latum P_5 = P_1
-    P(1,5) = P(1,1);
-    P(2,5) = P(2,1);
+    P = sortRectangle(P)
 
 end
 
@@ -69,6 +55,27 @@ function minX = minBy(P,c,from, to)
         end
         i = i+1;
     end
+end
+
+%Radar punktum ferhyrnings thannig ad vigrarnir milli p_n og p_n+1 seu rettsaelis,
+%P_5 = P_1
+function P = sortRectangle(P)
+    if paralell(P,4) == 0;
+        %Setjum tha i retta rod
+        P = swapColums(P,1,minBy(P,1,1,4));
+        P = swapColums(P,2,maxBy(P,2,2,4));
+        P = swapColums(P,3,maxBy(P,1,3,4));
+        % 4. punkturinn er þegar a rettum stad
+    else
+       P = swapColums(P,1,minBy(P,1,1,4));
+       P = swapColums(P,2,minBy(P,1,2,4));
+       P = swapColums(P,1,minBy(P,2,1,2));
+       P = swapColums(P,3,maxBy(P,2,3,4));
+    end
+
+    %Latum P_5 = P_1
+    P(1,5) = P(1,1);
+    P(2,5) = P(2,1);
 end
 
 %athughar hvort kassinn se med hlidar samsida asum, ad k
