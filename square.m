@@ -1,4 +1,58 @@
+<<<<<<< HEAD
     function P = square(a,b,c,d)
+=======
+﻿%Skiptir a dalkum a og b i 2xN fylki
+function P = swapColums(P,a,b)
+    temp1 = P(1,a)
+    temp2 = P(2,a)
+    P(1,a) = P(1,b)
+    P(2,a) = P(2,b)
+    P(1,b) = temp1
+    P(2,b) = temp2 
+    return P
+end
+
+%Finnur staersta stak i linu c i fylki P
+function c = maxBy(P,c,from, to)
+    maxX = from;
+    i = from
+    while i <= to;
+        if P(i,c) >= P(minX,c);
+            maxX = i;
+        end
+        i = i+1;
+    end
+    return maxX;
+end
+
+%athughar hvort kassinn se med hlidar samsida asum, ad k
+function b = paralell(P,k)
+    i = 1
+    while i <= k;
+        if P(1,1) == P(1,k)
+            return 1;
+        end
+        i = i+1;
+    end
+    return 0;
+end 
+
+
+%Finnur minnsta stak i linu c i fylki P
+function c = minBy(P,c,from, to)
+    minX = from;
+    i = from
+    while i <= to;
+        if P(i,c) <= P(minX,c);
+            minX = i;
+        end
+        i = i+1;
+    end
+    return minX
+end
+
+function P = square(a,b,c,d)
+>>>>>>> 34967c050759d3ca641d0df9612fc09d3a86d5b0
     %Teiknum hnitakerfi
     clf;
     axis([a b c d])
