@@ -8,7 +8,7 @@ function P = square(a,b,c,d)
     i = 1;
     %Buum til fylki til að geyma niðurstöður.
     P = [ 0 0 0 0 0; 0 0 0 0 0];
-    while hnappur == 1;
+    while hnappur == 1 && i <= 4;
         [x,y,hnappur] = ginput(1);
         %Viljum bara fá 4 punkta.
         if hnappur == 1 && i <= 4;
@@ -19,7 +19,10 @@ function P = square(a,b,c,d)
         end
     end
     
-    P = sortRectangle(P)
+    %P = sortRectangle(P);
+    P = altsortrect(P);
+    
+    plot(P(1,:),P(2,:))
 
 end
 
@@ -76,6 +79,17 @@ function P = sortRectangle(P)
     %Latum P_5 = P_1
     P(1,5) = P(1,1);
     P(2,5) = P(2,1);
+end
+
+function P = altsortrect(P)
+    ch = convhull(P(1,1:4)',P(2,1:4)');
+    temp = zeros(2,5);
+    for i = 1:5
+        temp(1,i) = P(1,ch(6-i));
+        temp(2,i) = P(2,ch(6-i));
+    end
+    
+    P = temp;
 end
 
 %athughar hvort kassinn se med hlidar samsida asum, ad k

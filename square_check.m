@@ -1,4 +1,4 @@
-function flag = square_check(x,P);
+function flag = square_check(x,P)
 
 v = zeros(2,4);
 for i = 1:4;
@@ -15,7 +15,7 @@ end
 flag = 1;
 
 for i = 1:4;
-    if n(1:2,i)*(x-P(1:2,i)) > 0;
+    if n(1:2,i)'*(x-P(1:2,i)) > 0;
         flag = 0;
         break;
     end
