@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-    function P = square(a,b,c,d)
-=======
-﻿%Skiptir a dalkum a og b i 2xN fylki
+%Skiptir a dalkum a og b i 2xN fylki
 function P = swapColums(P,a,b)
     temp1 = P(1,a)
     temp2 = P(2,a)
@@ -52,7 +49,6 @@ function c = minBy(P,c,from, to)
 end
 
 function P = square(a,b,c,d)
->>>>>>> 34967c050759d3ca641d0df9612fc09d3a86d5b0
     %Teiknum hnitakerfi
     clf;
     axis([a b c d])
@@ -82,7 +78,7 @@ function P = square(a,b,c,d)
        P = swapColums(P,1,minBy(P,1,1,4));
        P = swapColums(P,2,minBy(P,1,2,4));
        P = swapColums(P,1,minBy(P,2,1,2));
-           P = swapColums(P,3,maxBy(P,2,3,4));
+       P = swapColums(P,3,maxBy(P,2,3,4));
     end
     
     %Latum P_5 = P_1
@@ -90,6 +86,7 @@ function P = square(a,b,c,d)
     P(2,5) = P(2,1);
 
 end
+
 %Skiptir a dalkum a og b i 2xN fylki
 function P = swapColums(P,a,b)
     temp1 = P(1,a);
@@ -112,6 +109,18 @@ function maxX = maxBy(P,c,from, to)
     end
 end
 
+%Finnur minnsta stak i linu c i fylki P
+function minX = minBy(P,c,from, to)
+    minX = from;
+    i = from;
+    while i <= to;
+        if P(c,i) <= P(c,minX);
+            minX = i;
+        end
+        i = i+1;
+    end
+end
+
 %athughar hvort kassinn se med hlidar samsida asum, ad k
 function b = paralell(P,k)
     b = 0;
@@ -126,15 +135,4 @@ function b = paralell(P,k)
 end 
 
 
-%Finnur minnsta stak i linu c i fylki P
-function minX = minBy(P,c,from, to)
-    minX = from;
-    i = from;
-    while i <= to;
-        if P(c,i) <= P(c,minX);
-            minX = i;
-        end
-        i = i+1;
-    end
-end
 
