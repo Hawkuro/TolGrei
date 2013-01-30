@@ -14,7 +14,7 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P);
     %fprintf('%1d  %21.15e\n',n,x')
     y=F(x)
     dy=dF(x) 
-    h=-dy\y; 
+    h=-dy\y; %Hvernig er það reiknað með vigrum? þetta virkar ekki.
     x=x+h 
     n=1; 
     e0=norm(h);
