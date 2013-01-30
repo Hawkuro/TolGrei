@@ -1,3 +1,3 @@
-function r = f(x,y)
+function r = func(x,y)
   r = sin(x) + cos(y)
   end
