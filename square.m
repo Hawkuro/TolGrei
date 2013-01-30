@@ -19,10 +19,11 @@ function P = square(a,b,c,d)
         end
     end
     
-    %P = sortRectangle(P);
-    P = altsortrect(P);
+    P = sortRectangle(P);
+    %P = altsortrect(P);
     
-    plot(P(1,:),P(2,:))
+    plot([P(1,1:4) 0],[P(2,1:4) 0])
+    %plot(P(1,:),P(2,:))
 
 end
 
