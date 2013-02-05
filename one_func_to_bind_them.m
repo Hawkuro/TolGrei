@@ -34,14 +34,15 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
 			plot(p(1),p(2),'o')
 			h1 = 0.01 * min(b-a,d-c);
 			Hessian = dFgeneral(f,h1,p)
-			break
-		end
+			break;
 		else
 			clf;
 			contour(X,Y,Z,50)
+            hold on
 			plot(p(1),p(2),'o')
 			plot(x,y,'x');
-    			plot(P(1,:),P(2,:),'--')
+            plot(P(1,:),P(2,:),'--')
+        end
 	end
 
 end
