@@ -1,24 +1,24 @@
 function one_func_to_bind_them(axiss)
+	a=axiss(1);
+	b=axiss(2);
+	c=axiss(3);
+	d=axiss(4);
 
-a=axiss(1);
-b=axiss(2);
-c=axiss(3);
-d=axiss(4);
+	axis(axiss);
 
-axis(axiss);
+	x = linspace(a,b,250);
+	y = linspace(c,d,250);
 
-x = linspace(a,b,250);
-y = linspace(c,d,250);
+	f = @(x,y) cos(x) + sin(y);
 
-f = @(x,y) cos(x) + sin(y);
+	[X,Y] = meshgrid(x,y);
 
-[X,Y] = meshgrid(x,y);
+	clf;
+	Z = arrayfun(f,X,Y);
 
-%Z = griddata(x,y,f,X,Y);
-Z = arrayfun(f,X,Y);
+	contour(X,Y,Z,50)
 
-contour(X,Y,Z,50)
+	hold on
 
-hold on
-
-[P,x0]=square(a,b,c,d);
+	[P,x0]=square(a,b,c,d);
+end
