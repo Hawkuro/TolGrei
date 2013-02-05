@@ -33,8 +33,8 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
 		if(square_check(p,P)) 
 			plot(p(1),p(2),'o')
 			h1 = 0.01 * min(b-a,d-c);
-			Hessian = dFgeneral(f,h1,p)
-			break;
+			Hessian = dFgeneral(f,h1,p);
+            break;
 		else
 			clf;
 			contour(X,Y,Z,50)
@@ -43,6 +43,11 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
 			plot(x,y,'x');
             plot(P(1,:),P(2,:),'--')
         end
-	end
+    end
+    if(det(Hessian) ~= 0)
+        eigs = eig(Hessian);
+    else
+        %lame
+    end
 
 end
