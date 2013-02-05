@@ -18,3 +18,7 @@ f = @(x,y) cos(x) + sin(y);
 Z = arrayfun(f,X,Y);
 
 contour(X,Y,Z,50)
+
+hold on
+
+[P,x0]=square(a,b,c,d);

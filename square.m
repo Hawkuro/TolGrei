@@ -1,7 +1,6 @@
 %Tekur inn hnit med musasmellum og skilar fylki med theim i rettri rod.
 function [P x0] = square(a,b,c,d)
     %Teiknum hnitakerfi
-    clf;
     axis([a b c d])
     hold on
     hnappur = 1;
@@ -23,6 +22,7 @@ function [P x0] = square(a,b,c,d)
     test = P(:,5); %Tékkar hvort convhull gefi fjóra punkta, og því hvort ferhyrningurinn sé kúptur.
     plot(P(1,:),P(2,:))
     [x, y, hnappur] = ginput(1);
+    plot(x,y,'x');
     x0 = [ x; y];
 end
 
