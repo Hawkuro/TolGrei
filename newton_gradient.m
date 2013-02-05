@@ -35,5 +35,3 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P, axis)
         e0=e;
     end
 end
-
-
