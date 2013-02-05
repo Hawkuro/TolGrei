@@ -25,15 +25,4 @@ function P = square(a,b,c,d)
     plot(P(1,:),P(2,:))
 end
 
-function P = sortRect(P)
-    %ch = convhull(P(1,1:4)',P(2,1:4)');
-    %temp = zeros(2,5);
-    P = P(:,flipdim(convhull(P(1,1:4)',P(2,1:4)'),1));
-    %for i = 1:5
-        %temp(1,i) = P(1,ch(6-i));
-        %temp(2,i) = P(2,ch(6-i));
-    %end
-    %P = temp;
-end
-
 
