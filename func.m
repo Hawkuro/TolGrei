@@ -1,3 +1,3 @@
 function r = func(x,y)
-  r = sin(x) + cos(y)
-  end
+  r = sin(x) + cos(y);
+end
