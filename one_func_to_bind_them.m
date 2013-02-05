@@ -6,7 +6,7 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
 
 	axis(axiss);
     
-    f = @(x,y) func(x,y);
+    	f = @(x,y) func(x,y);
 
 	x = linspace(a,b,250);
 	y = linspace(c,d,250);
@@ -34,10 +34,14 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
 			plot(p(1),p(2),'o')
 			h1 = 0.01 * min(b-a,d-c);
 			Hessian = dFgeneral(f,h1,p)
+			break
 		end
-		%else
-			%clf;
-			%contour(X,Y,Z,50)
+		else
+			clf;
+			contour(X,Y,Z,50)
+			plot(p(1),p(2),'o')
+			plot(x,y,'x');
+    			plot(P(1,:),P(2,:),'--')
 	end
 
 end
