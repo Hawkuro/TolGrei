@@ -9,8 +9,8 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P, axis)
    end
    
    h1 = 0.01 * min(b-a,d-c);
-   F = @(x) F(f,h1,x)
-   dF = @(x) dF(f,h1,x) 
+   F = @(x) Fgeneral(f,h1,x)
+   dF = @(x) dFgeneral(f,h1,x) 
    % Upphafsstilling:
    n=0;
    x=x0; 
