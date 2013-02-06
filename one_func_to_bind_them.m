@@ -53,6 +53,7 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
     M = det(Hessian);
     if(M > 0)
         eigs = eig(Hessian);
+<<<<<<< HEAD
         if eigs(1) > 0 && eigs(2) > 0
             %lagpunktur
             plot(p(1),p(2),'v')
@@ -61,6 +62,16 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
                 %hapunktur
                 plot(p(1),p(2),'^')
             end
+=======
+        if(eigs(1) < 0 && eigs(2) < 0)
+            %Djamm
+        else
+           if(eigs(1)>0 && eigs(2)>0)
+              %Mega djamm
+           else
+             %Mega mega djamm!
+           end
+>>>>>>> 71d0ff776ef910f29e80cc872647aed92841427f
         end
     else
         if M < 0
