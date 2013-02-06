@@ -47,27 +47,36 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
         if(square_check(p,P)) 
             h1 = 0.01 * min(b-a,d-c);
             Hessian = dFgeneral(f,h1,p);
-	    M = det(Hessian);
-	    if(M > 0)
-		eigs = eig(Hessian);
-		if eigs(1) > 0 && eigs(2) > 0
-		    fprintf('Lágpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
-		    plot(p(1),p(2),'v')
-		else
-		    if eigs(1) < 0 && eigs(2) < 0
-		        fprintf('Hápunktur í (x,y) = (%f,%f)\n',p(1),p(2))
-			plot(p(1),p(2),'^')
-		    end
-		end
-	    else
-		if M < 0
-		    fprintf('Söðulpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
-		    plot(p(1),p(2),'*')
-		else
-		    fprintf('Ekki hægt að segja til um (x,y) = (%f,%f)\n',p(1),p(2))
-		    plot(p(1),p(2),'o')
-		end
-	    end
+            M = det(Hessian);
+
+            %Ef M er svona litid, tha er determinant fylkisins
+            %ansi nalgaegt thvi ad vera 0, og er thvi ekki
+            %haegt ad not thad i reikningum. Tha er heldur ekki
+            %haegt ad segja neitt um thann punkt, thannig ad
+            %vid sleppum honum bara
+            if abs(M) < epsilon
+                fprintf('Ekki hægt að segja til um (x,y) = (%f,%f)\n',p(1),p(2))
+                plot(p(1),p(2),'o')
+                continue
+            end
+
+            if(M > 0)
+                eigs = eig(Hessian);
+                if eigs(1) > 0 && eigs(2) > 0
+                    fprintf('Lágpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+                    plot(p(1),p(2),'v')
+                else
+                    if eigs(1) < 0 && eigs(2) < 0
+                        fprintf('Hápunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+                        plot(p(1),p(2),'^')
+                    end
+                end
+            else
+                if M < 0
+                    fprintf('Söðulpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+                    plot(p(1),p(2),'*')
+                end
+            end
        else
             fprintf('Enginn punktur fannst innan kassans\n');
         end

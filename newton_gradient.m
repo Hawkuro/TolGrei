@@ -17,8 +17,10 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P, axis)
    %fprintf('%1d  %21.15e\n',n,x')
    y=F(x);
    dy=dF(x);
-   %Possum ad fylkid se innan reiknimarka andhverfanlegt
-   if det(dy) < epsilon
+   
+   %Possum ad fylkid se innan reiknimarka andhverfanlegt, haettum
+   %ef svo er ekki
+   if abs(det(dy)) < epsilon
        return
    end
    h=-dy\y;
@@ -28,7 +30,7 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P, axis)
    e=2*epsilon;
    while e>epsilon && norm(y)>delta && n<nmax && square_check(x,P)
        y=F(x); dy=dF(x);
-       if det(dy) < epsilon
+       if abs(det(dy)) < epsilon
            return
        end
        h=-dy\y; 

@@ -41,6 +41,19 @@ function automaticCriticalPointSearch(f,axiss,epsilon,delta,nmax,boxes)
 		h1 = 0.01 * min(b-a,d-c);
 		Hessian = dFgeneral(f,h1,p);
 		M = det(Hessian);
+                
+                %Ef M er svona litid, tha er determinant fylkisins
+                %ansi nalgaegt thvi ad vera 0, og er thvi ekki
+                %haegt ad not thad i reikningum. Tha er heldur ekki
+                %haegt ad segja neitt um thann punkt, thannig ad
+                %vid sleppum honum bara
+                if abs(M) < epsilon
+                    j = j+1;
+                    fprintf('Ekki hægt að segja til um (x,y) = (%f,%f)\n',p(1),p(2))
+                    plot(p(1),p(2),'o')
+                    continue
+                end
+                
 		if(M > 0)
 		    eigs = eig(Hessian);
 		    if eigs(1) > 0 && eigs(2) > 0
@@ -56,11 +69,6 @@ function automaticCriticalPointSearch(f,axiss,epsilon,delta,nmax,boxes)
 		    if M < 0
 			fprintf('Söðulpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
 			plot(p(1),p(2),'*')
-		    else
-                        if M == 0
-                            fprintf('Ekki hægt að segja til um (x,y) = (%f,%f)\n',p(1),p(2))
-                            plot(p(1),p(2),'o')
-                        end
 		    end
 		end
 	    end
