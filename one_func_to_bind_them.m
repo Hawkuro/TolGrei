@@ -46,6 +46,15 @@ function one_func_to_bind_them(axiss,epsilon,delta,nmax)
     end
     if(det(Hessian) ~= 0)
         eigs = eig(Hessian);
+        if(eigs(1) < 0 && eigs(2) < 0)
+            %Djamm
+        else
+           if(eigs(1)>0 && eigs(2)>0)
+              %Mega djamm
+           else
+             %Mega mega djamm!
+           end
+        end
     else
         %lame
     end
