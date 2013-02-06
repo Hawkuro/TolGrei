@@ -19,11 +19,22 @@ function P = square(a,b,c,d)
         end
     end
     if i <= 4
+        %Getum notad thetta til ad akvarda hvort haegri klikk kom.
+        P = [];
         return
     end
-    P = P(:,flipdim(convhull(P(1,1:4)',P(2,1:4)'),1));
-    %test = P(:,5); %T�kkar hvort convhull gefi fj�ra punkta, og �v� hvort ferhyrningurinn s� k�ptur.
-    plot(P(1,:),P(2,:))
+    %Possum ad vid hofum fengid nogu marga punkta
+    if length(unique(P.','rows')) >= 4
+        P = P(:,flipdim(convhull(P(1,1:4)',P(2,1:4)'),1));
+        plot(P(1,:),P(2,:))
+        %Possum ad vid seum med kassa en ekki t.d. Thrihyrning
+        if length(P) < 5 
+            P = square(a,b,c,d);
+        end
+    else
+        %Ef ekki bidjum vid um nyjan kassa
+        P = square(a,b,c,d);
+   end
 end
 
 

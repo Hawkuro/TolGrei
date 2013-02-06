@@ -22,8 +22,10 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
     
     while hnappur == 1  
         P = square(a,b,c,d);
-        
-        if length(P) ~= 5
+       
+        %Vid faum P = [] ef vid haettum i midri keyrslu, t.d. ef
+        %smellt er a haegri hnapp.
+        if length(P) == 0
             return
         end
         
@@ -41,7 +43,6 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
         end
         
         
-        
         p = newton_gradient(f,epsilon,delta,nmax,x0,P,axiss);
         if(square_check(p,P)) 
             h1 = 0.01 * min(b-a,d-c);
@@ -50,34 +51,25 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
 	    if(M > 0)
 		eigs = eig(Hessian);
 		if eigs(1) > 0 && eigs(2) > 0
-		    %lagpunktur
 		    fprintf('Lágpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
 		    plot(p(1),p(2),'v')
 		else
 		    if eigs(1) < 0 && eigs(2) < 0
-			%hapunktur
 		        fprintf('Hápunktur í (x,y) = (%f,%f)\n',p(1),p(2))
 			plot(p(1),p(2),'^')
 		    end
 		end
 	    else
 		if M < 0
-		    %Sodulpunktur
 		    fprintf('Söðulpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
 		    plot(p(1),p(2),'*')
 		else
-		    %Test inconclusive
+		    fprintf('Ekki hægt að segja til um (x,y) = (%f,%f)\n',p(1),p(2))
 		    plot(p(1),p(2),'o')
 		end
 	    end
        else
-	    %Viljum ekki hreinsa mynd    
-            %clf;
-            %contour(X,Y,Z,50)
-            %hold on
-            %plot(p(1),p(2),'o')
-            %plot(x,y,'x');
-            %plot(P(1,:),P(2,:),'--')
+            fprintf('Enginn punktur fannst innan kassans\n');
         end
     end
     
