@@ -1,38 +1,38 @@
 function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
-	a=axiss(1);
-	b=axiss(2);
-	c=axiss(3);
-	d=axiss(4);
+    a=axiss(1);
+    b=axiss(2);
+    c=axiss(3);
+    d=axiss(4);
 
-	axis(axiss);
+    axis(axiss);
     
-	x = linspace(a,b,250);
-	y = linspace(c,d,250);
+    x = linspace(a,b,250);
+    y = linspace(c,d,250);
     
-	[X,Y] = meshgrid(x,y);
+    [X,Y] = meshgrid(x,y);
 
 
-	Z = arrayfun(f,X,Y);
+    Z = arrayfun(f,X,Y);
     
     clf;
+    contour(X,Y,Z,50)
 
-	contour(X,Y,Z,50)
-
-	hold on
-	hnappur = 1;
-	while hnappur == 1	
-		P = square(a,b,c,d);
+    hold on
+    hnappur = 1;
+    
+    while hnappur == 1  
+        P = square(a,b,c,d);
         
         [x, y, hnappur] = ginput(1);
-		plot(x,y,'x');
-		x0 = [ x; y];
+        plot(x,y,'x');
+        x0 = [ x; y];
         
         while (square_check(x0,P) ~= 1)
             [x, y, hnappur] = ginput(1);
             plot(x,y,'x');
             x0 = [ x; y];
         end
-		
+        
         
         
         p = newton_gradient(f,epsilon,delta,nmax,x0,P,axiss);
