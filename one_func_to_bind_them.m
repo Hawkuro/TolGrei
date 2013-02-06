@@ -20,7 +20,8 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
 
 	hold on
 	hnappur = 1;
-	while hnappur == 1	
+	
+    while hnappur == 1	
 		P = square(a,b,c,d);
         
         [x, y, hnappur] = ginput(1);
