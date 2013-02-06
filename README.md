@@ -1,5 +1,8 @@
 Velkomnir!
 ==========
 
-Þetta er mest allt komið, spurði kennara í dæmatíma, og hann staðfesti að forritið ætti að virka eins og það gerir hjá okkur.
-Við þurfum bara að gera þetta summu func, sjálfvirka leit og svo texa. 
+Þetta er ekki alveg komið hjá okkur.
+Þegar að við finnum punkt, þá eigum við að prenta út upplýsingar um hann, en ekki bara skilja hann eftir á myndinni,
+i.e. hvers kyns hann er, og hvar hann er etc.
+Síðan á forritið ekki að hætta fyrr en maður fær hægri smell, þannig að maður á að geta leitað að punktum eins og maður vill,
+jafnvel þótt að maður hafi þegar fundið punkt.

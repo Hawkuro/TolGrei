@@ -46,36 +46,39 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
         if(square_check(p,P)) 
             h1 = 0.01 * min(b-a,d-c);
             Hessian = dFgeneral(f,h1,p);
-            break;
-        else
-            clf;
-            contour(X,Y,Z,50)
-            hold on
-            plot(p(1),p(2),'o')
-            plot(x,y,'x');
-            plot(P(1,:),P(2,:),'--')
+	    M = det(Hessian);
+	    if(M > 0)
+		eigs = eig(Hessian);
+		if eigs(1) > 0 && eigs(2) > 0
+		    %lagpunktur
+		    fprintf('Lágpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+		    plot(p(1),p(2),'v')
+		else
+		    if eigs(1) < 0 && eigs(2) < 0
+			%hapunktur
+		        fprintf('Hápunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+			plot(p(1),p(2),'^')
+		    end
+		end
+	    else
+		if M < 0
+		    %Sodulpunktur
+		    fprintf('Söðulpunktur í (x,y) = (%f,%f)\n',p(1),p(2))
+		    plot(p(1),p(2),'*')
+		else
+		    %Test inconclusive
+		    plot(p(1),p(2),'o')
+		end
+	    end
+       else
+	    %Viljum ekki hreinsa mynd    
+            %clf;
+            %contour(X,Y,Z,50)
+            %hold on
+            %plot(p(1),p(2),'o')
+            %plot(x,y,'x');
+            %plot(P(1,:),P(2,:),'--')
         end
     end
     
-    M = det(Hessian);
-    if(M > 0)
-        eigs = eig(Hessian);
-        if eigs(1) > 0 && eigs(2) > 0
-            %lagpunktur
-            plot(p(1),p(2),'v')
-        else
-            if eigs(1) < 0 && eigs(2) < 0
-                %hapunktur
-                plot(p(1),p(2),'^')
-            end
-        end
-    else
-        if M < 0
-            %Sodulpunktur
-            plot(p(1),p(2),'*')
-        else
-            %Test inconclusive
-            plot(p(1),p(2),'o')
-        end
-    end
 end
