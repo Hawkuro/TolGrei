@@ -61,14 +61,6 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
                 %hapunktur
                 plot(p(1),p(2),'^')
             end
-        if(eigs(1) < 0 && eigs(2) < 0)
-            %Djamm
-        else
-           if(eigs(1)>0 && eigs(2)>0)
-              %Mega djamm
-           else
-             %Mega mega djamm!
-           end
         end
     else
         if M < 0
