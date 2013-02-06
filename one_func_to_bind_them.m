@@ -23,7 +23,14 @@ function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
     while hnappur == 1  
         P = square(a,b,c,d);
         
+        if length(P) ~= 5
+            return
+        end
+        
         [x, y, hnappur] = ginput(1);
+        if hnappur ~= 1
+            return
+        end
         plot(x,y,'x');
         x0 = [ x; y];
         

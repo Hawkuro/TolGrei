@@ -6,7 +6,8 @@ function P = square(a,b,c,d)
     hnappur = 1;
     i = 1;
     %Buum til fylki til a√∞ geyma ni√∞urst√∂√∞ur.
-    P = [ 0 0 0 0 0; 0 0 0 0 0];
+    %P = [ 0 0 0 0 0; 0 0 0 0 0];
+    %Fylki er buid til sjalfkrafa
     while hnappur == 1 && i <= 4;
         [x,y,hnappur] = ginput(1);
         %Viljum bara f√° 4 punkta.
@@ -17,9 +18,11 @@ function P = square(a,b,c,d)
             i = i+1;
         end
     end
-    
+    if i <= 4
+        return
+    end
     P = P(:,flipdim(convhull(P(1,1:4)',P(2,1:4)'),1));
-    test = P(:,5); %TÈkkar hvort convhull gefi fjÛra punkta, og ˛vÌ hvort ferhyrningurinn sÈ k˙ptur.
+    %test = P(:,5); %TÔøΩkkar hvort convhull gefi fjÔøΩra punkta, og ÔøΩvÔøΩ hvort ferhyrningurinn sÔøΩ kÔøΩptur.
     plot(P(1,:),P(2,:))
 end
 
