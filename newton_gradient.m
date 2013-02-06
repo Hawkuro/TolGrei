@@ -8,7 +8,7 @@ function x = newton_gradient(f,epsilon, delta, nmax, x0, P, axis)
        d = axis(4);
    end
    
-   h1 = 0.01 * min(b-a,d-c)
+   h1 = 0.01 * min(b-a,d-c);
    F = @(x) Fgeneral(f,h1,x);
    dF = @(x) dFgeneral(f,h1,x); 
    % Upphafsstilling:
