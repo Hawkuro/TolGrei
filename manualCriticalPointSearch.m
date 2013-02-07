@@ -1,4 +1,4 @@
-function one_func_to_bind_them(f,axiss,epsilon,delta,nmax)
+function manualCriticalPointSearch(f,axiss,epsilon,delta,nmax)
     a=axiss(1);
     b=axiss(2);
     c=axiss(3);
