@@ -10,8 +10,7 @@ function manualCriticalPointSearch(f,axiss,epsilon,delta,nmax)
     y = linspace(c,d,250);
     
     [X,Y] = meshgrid(x,y);
-
-
+    
     Z = arrayfun(f,X,Y);
     
     clf;
