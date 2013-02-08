@@ -1,4 +1,12 @@
-\input{/head.tex}
+\documentclass{article}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage{sidecap}
+\usepackage[utf8]{inputenc}
+
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}%?essi l?na er til þess að taka inn latec kóða undir \begin{lstlisting}
 \usepackage{amsfonts}
 \usepackage{epstopdf}
 \title{Heimaverkefni 1}
@@ -13,6 +21,21 @@
 
 \section{}
 
-\lstinputlisting[languoge=Matlab]{square_check.m} 
+\lstinputlisting[language=Matlab]{square_check.m} 
+%gera keyrsluskrǻ fyrir square
+\section{}
+\lstinputlisting[language=Matlab]{newton_gradient.m}
+%vantar keyrsluskrǻ
 
+\section{}
+\subsection*{fallið f úr lið i}
+\lstinputlisting[language=Matlab]{func.m}
+\subsection*{forritið}
+\lstinputlisting[language=Matlab]{manualCriticalPointSearch.m}
+\subsection*{}
+forrit sem skilgreinir
+$$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
+\lstinputlisting[language=Matlab]{func2.m}
+\section{}
+\lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
 \end{document}
