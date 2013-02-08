@@ -64,10 +64,12 @@ function manualCriticalPointSearch(f,axiss,epsilon,delta,nmax)
                 if eigs(1) > 0 && eigs(2) > 0
                     fprintf('Lágpunktur í (x,y) = (%f,%f), f(x,y) = %f\n',p(1),p(2),f(p(1),p(2)))
                     plot(p(1),p(2),'v')
+                    fprintf('Gildi: %f\n',f(p(1),p(2)))
                 else
                     if eigs(1) < 0 && eigs(2) < 0
                     fprintf('Hápunktur í (x,y) = (%f,%f), f(x,y) = %f\n',p(1),p(2),f(p(1),p(2)))
                         plot(p(1),p(2),'^')
+                        fprintf('Gildi: %f\n', f(p(1),p(2)))
                     end
                 end
             else
