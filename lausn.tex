@@ -147,7 +147,7 @@ en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\textwidth]{manualdaemi1.eps}
-\caption{Prufun á manual search}
+\caption{Keyrsla á manual search}
 \end{figure}
 
 \newpage
@@ -175,11 +175,72 @@ Einnig væri kannski sniðugt að láta það plotta í þrívídd, og sýna man
 
 \section{Aukaliður}
 Fall sem skiptir svæðinu öllu í reiti og leitar kerfisbundið að stöðupunktum
-Fallið er keyrt á hliðstæðan hátt og handstýrða stöðupunktaleitin nema hvað bæta þarf inn fallgildinu boxes sem segir til um hve margar skiptingar á að gera á svæðinu á hvorn ás svo svæðinu er skipt í $boxes^2$ reiti og leitar innan hvers og eins reitar að sérstöðupunktum og flokkar þá sem hægt er 
+Fallið er keyrt á hliðstæðan hátt og handstýrða stöðupunktaleitin nema hvað bæta þarf inn fallgildinu boxes sem segir til um hve margar skiptingar á að gera á svæðinu á hvorn ás svo svæðinu er skipt í $boxes^2$ reiti og leitar innan hvers og eins reitar að sérstöðupunktum og flokkar þá sem hægt er.
+
 \lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
 
-Að skýrsluni unnu : \\
-\vspace{10cm}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{acpkeyrsla1.eps}
+\caption{Keyrsla á acpkeyrsla1}
+\end{figure}
+
+Keyrsluskrá acpkeyrsla1:
+\lstinputlisting[language=Matlab]{acpkeyrsla1.m}
+
+\newpage
+
+Úttak keyrslu:
+\begin{lstlisting}[language=Matlab]
+Ekki hægt að segja til um (x,y) = (-0.926579,-0.926579)
+Ekki hægt að segja til um (x,y) = (-0.961572,-0.058996)
+Ekki hægt að segja til um (x,y) = (-0.961572,0.058996)
+Ekki hægt að segja til um (x,y) = (-0.926579,0.926579)
+Hápunktur í (x,y) = (-0.500000,-0.500000), f(x,y) = 1.000000
+Lágpunktur í (x,y) = (-0.500000,0.500000), f(x,y) = -1.000000
+Ekki hægt að segja til um (x,y) = (-0.058996,-0.961572)
+Ekki hægt að segja til um (x,y) = (-0.048544,-0.048544)
+Ekki hægt að segja til um (x,y) = (-0.048544,0.048544)
+Ekki hægt að segja til um (x,y) = (-0.058996,0.961572)
+Ekki hægt að segja til um (x,y) = (0.058996,-0.961572)
+Ekki hægt að segja til um (x,y) = (0.048544,-0.048544)
+Ekki hægt að segja til um (x,y) = (0.048544,0.048544)
+Ekki hægt að segja til um (x,y) = (0.058996,0.961572)
+Lágpunktur í (x,y) = (0.500000,-0.500000), f(x,y) = -1.000000
+Hápunktur í (x,y) = (0.500000,0.500000), f(x,y) = 1.000000
+Ekki hægt að segja til um (x,y) = (0.926579,-0.926579)
+Ekki hægt að segja til um (x,y) = (0.961572,-0.058996)
+Ekki hægt að segja til um (x,y) = (0.961572,0.058996)
+Ekki hægt að segja til um (x,y) = (0.926579,0.926579)
+\end{lstlisting}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{acpkeyrsla2.eps}
+\caption{Keyrsla á acpkeyrsla2}
+\end{figure}
+
+\newpage
+Keyrsluskrá acpkeyrsla2:
+\lstinputlisting[language=Matlab]{acpkeyrsla2.m}
+
+Úttak keyrslu:
+\begin{lstlisting}[language=Matlab]
+Lágpunktur í (x,y) = (-1.570796,-3.141593), f(x,y) = -2.000000
+Söðulpunktur í (x,y) = (-1.570796,0.000000)
+Lágpunktur í (x,y) = (-1.570796,3.141593), f(x,y) = -2.000000
+Söðulpunktur í (x,y) = (1.570796,-3.141593)
+Hápunktur í (x,y) = (1.570796,0.000000), f(x,y) = 2.000000
+Söðulpunktur í (x,y) = (1.570796,3.141593)
+Lágpunktur í (x,y) = (4.712389,-3.141593), f(x,y) = -2.000000
+Söðulpunktur í (x,y) = (4.712389,0.000000)
+Lágpunktur í (x,y) = (4.712389,3.141593), f(x,y) = -2.000000
+\end{lstlisting}
+
+
+\vspace{20 mm}
+Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
