@@ -106,47 +106,20 @@ Einnig má það taka inn endapunkta hnitakerfisins, en það er notað til þes
 \lstinputlisting[language=Matlab]{newton_gradient.m}
 
 Keyrsla með nokkrum dæmum. $\epsilon, \delta$ voru valin nógu lítil og $N$ nógu stórt þannig að forritið tæki ekki of langan tíma, en hinsvegar skilaði frekar nákvæmum niðurstöðum:
+
+\lstinputlisting[language=Matlab]{newtongradientkeyrsla.m}
 \begin{lstlisting}[language=Matlab]
->> P = [ -1,-1,1,1,-1;-1,1,1,-1,-1]
+ans =
 
-P =
+     0
+     0
 
-    -1    -1     1     1    -1
-    -1     1     1    -1    -1
-
->> f = @(x,y) x^2 + y^2
-
-f = 
-
-    @(x,y)x^2+y^2
-
->> newton_gradient(f,0.001,0.001,100,[0.5;0.5],P)
 
 ans =
 
      0
      0
 
->> f = @(x,y) x*y
-
-f = 
-
-    @(x,y)x*y
-
->> newton_gradient(f,0.001,0.001,100,[0.5;0.5],P)
-
-ans =
-
-     0
-     0
-
->> f = @(x,y) sin(x) + cos(y)
-
-f = 
-
-    @(x,y)sin(x)+cos(y)
-
->> newton_gradient(f,0.001,0.001,100,[-1.5;0.0],2*P)
 
 ans =
 
@@ -176,21 +149,18 @@ en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um 
 \caption{Prufun á manual search}
 \end{figure}
 
-Keyrslan á mynd 3 má sjá í eftirfarandi kóða:
+\newpage
+Keyrsluskrá:
+\lstinputlisting[language=Matlab]{manualcpkeyrsla.m}
+Keyrsla, mynd má sjá á mynd 3.
 \begin{lstlisting}[language=Matlab]
->>f = @(x,y) sin(x) + cos(y)
-
-f = 
-
-    @(x,y)sin(x)+cos(y)
-
->> manualCriticalPointSearch(f,[-4,4,-4,4],0.001,0.001,100)
 Hápunktur í (x,y) = (1.570796,-0.000000), f(x,y) = 2.000000
 Söðulpunktur í (x,y) = (-1.570796,0.000000)
 Lágpunktur í (x,y) = (-1.570796,3.141593), f(x,y) = -2.000000
 Lágpunktur í (x,y) = (-1.570796,-3.141593), f(x,y) = -2.000000
 Söðulpunktur í (x,y) = (1.570796,-3.141593)
 \end{lstlisting}
+
 
 \subsection*{}
 Forrit sem skilgreinir
@@ -199,6 +169,9 @@ $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 
 Einnig er wrapper fyrir fallið, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall úr commandline í matlab nema að það sé anonymous.
 \lstinputlisting[language=Matlab]{func2wrapper.m}
+
+Forritið mætti vinna áfram og gera það t.d.\ sjálfvirkt, þannig mætti forða manni frá því að vera að tékka handvirkt, og auðvelda manni þannig vinnuna.
+Einnig væri kannski sniðugt að láta það plotta í þrívídd, og sýna manni þannig að hágildi og lággildi eru í raun í punktunum, þ.e. að þar eru hápunktar og lágpunktar sléttunnar.
 
 \section{}
 \lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
