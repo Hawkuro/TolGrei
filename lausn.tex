@@ -11,16 +11,33 @@
 \usepackage{amsfonts}
 \usepackage{epstopdf}
 
-\title{Heimaverkefni 1}
+\title{Töluleg Greining\\ Heimaverkefni 1}
+\date{\today{}}
+\author{ 
+  Bjarki Geir Benediktsson,\and
+  Haukur Óskar Þorgeirsson,\and
+  Matthías Páll Gissurarson \and
+  Kennari: Máni Maríus Viðarsson
+  }
+
+
+
 \begin{document}
 \begin{flushright}
-  Töluleg Greining, Heimaverkefni 1\\
-  \today{}\\
   Bjarki Geir Benediktsson,\\
   Haukur Óskar Þorgeirsson,\\
-  Matthías Páll Gissurarson
+  Matthías Páll Gissurarson\\
   \end{flushleft}
 
+\begin{center}
+ \textsc{ \LARGE Töluleg Greining\\
+  Heimaverkefni 1\\
+  \today{}
+  }
+  \end{center}
+\vfill
+
+\maketitle
 \section*{Inngangur}
 
 Verkefni þetta snýst um að nota matlab til þess að leita að stöðupunktum í gefnu falli oog flokka þá. fyrst með því að leita handvirkt með því að teikna kassa utan um mögulega stöðupunkta út frá jafnhæðarferlum fallsins, og hins vegar með því að leita skipulega fyrir innan gefinn ramma.
@@ -138,6 +155,8 @@ en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um 
 Forrit sem skilgreinir
 $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 \lstinputlisting[language=Matlab]{func2.m}
+og wrapper fyrir það, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall út commandline í matlab nema að það sé anonymous.
+\lstinputlisting[language=Matlab]{func2wrapper.m}
 
 \section{}
 \lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
