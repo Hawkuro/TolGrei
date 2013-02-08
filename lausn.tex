@@ -67,7 +67,9 @@ Prufum að keyra þetta og dæla inn ferhyrning úr \lstinline{square} og núllp
 \includegraphics[width=0.7\textwidth]{sqchdaemi.eps}
 \caption{Ferhyrningurinn sem var teiknaður (sjá má að núllpunkturinn er innan hans)}
 \end{figure}
+
 Úttak af skipanalínu MATLAB:
+
 \begin{lstlisting}
 >> square_check([0; 0],square(-1,1,-1,1))
 
@@ -75,6 +77,7 @@ ans =
 
      1
 \end{lstlisting}
+
 \section{}
 Þetta forrit er forritið sem gerir mestu vinnuna, en það er forritið sem finnur fyrir okkur, með aðferð newtons, stöðupunkta fallsins. Það tekur inn falli sem á að athuga,
 epsilon, sem tilgreinir skekkjuna frá réttum punkti sem við sættum okkur við,
@@ -84,7 +87,10 @@ en einnig hversu margar ítranir við viljum keyra, til að koma í veg fyrir a�
 
 \lstinputlisting[language=Matlab]{newton_gradient.m}
 
-\section{}
+\section{Handstýrð leit að stöðupunktum}
+
+Nú erum við loks komin á þann stað að geta farið að leita að stöðupunktum. Forrit þetta teiknar fyrst upp jafnhæðarferla gefins falls og gefur svo kost á því að velja ferhyrning og svo byrjunarpunkt. Þá notar forritið \lstinline{newton_gradient} til að leita að stöðupunkti. Ef hann finnst er hann flokkaður, staðsetning og gildi hans skrifað út á úttakslínu og hann er merktur inn á myndina. Ef hann hann finnst ekki gerist ekkert. Svo er gefinn kostur á því að halda áfram og finna nýja stöðupunkta. Forritið hættir þegar smellt er á hægri músarhnapp.
+
 \subsection*{Fallið f úr lið i}
 \lstinputlisting[language=Matlab]{func.m}
 \subsection*{Forritið}
@@ -94,10 +100,12 @@ Athugið að mcode virðist ekki styðja íslenska stafi, en útprentað er
 en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um punktinn.\\
 
 \lstinputlisting[language=Matlab]{manualCriticalPointSearch.m}
+
 \subsection*{}
 forrit sem skilgreinir
 $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 \lstinputlisting[language=Matlab]{func2.m}
+
 \section{}
 \lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
 \end{document}
