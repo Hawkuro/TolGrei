@@ -2,11 +2,11 @@
 \usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{sidecap}
 \usepackage[utf8]{inputenc}
 
-\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} %?essi l?na er til þess að taka inn latec kóða undir \begin{lstlisting}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 \usepackage{amsfonts}
 \usepackage{epstopdf}
 \title{Heimaverkefni 1}
@@ -14,12 +14,40 @@
 \begin{document}
 \maketitle
 
-\section{}
+\section*{Inngangur}
+
+Verkefni þetta snýst um að nota matlab til þess að leita að stöðupunktum í gefnu falli oog flokka þá. fyrst með því að leita handvirkt með því að teikna kassa utan um mögulega stöðupunkta út frá jafnhæðarferlum fallsins, og hins vegar með því að leita skipulega fyrir innan gefinn ramma.
+
+\section{Innlestur hnita frá mús}
+
+Hér má sjá fyrsta forritið, en það má til dæmis keyra með \lstinline{square(-1,1,-1,1)} Til að keyra það á $[-1,1] \times [-1,1]$. Þetta forrit virkar þannig að það kemur upp mynd af hnitakerfi þar sem maður getur valið fjóra punkta með þvi að smella á hnitakerfið. Svo er teiknaður ferhyrningurinn sem punktarnir skilgreina (gefið að hann sé kúptur, annars kemur upp villa), og innan forritsins eru punktarnir komnir í þannig röð að þeir ganga réttsælis í ferhyrningnum. Forritið hættir ef smellt er á hægri músarhnapp.
 
 \lstinputlisting[language=Matlab]{square.m}
 
+Keyrt með \lstinline{square(-1,1,-1,1)} fæst:
 
-\section{}
+\begin{figure}
+\centering
+\includegraphics{squaredaemi.png}
+\caption{Ferhyrningur teiknaður}
+\end{figure}
+
+\begin{lstlisting}
+ans =
+
+  Columns 1 through 4
+
+   -0.3664    0.1037    0.0392   -0.3940
+    0.2661    0.4766   -0.1667   -0.1199
+
+  Column 5
+
+   -0.3664
+    0.2661
+\end{lstlisting}
+
+
+\section{Úttak }
 
 \lstinputlisting[language=Matlab]{square_check.m} 
 \section{}
