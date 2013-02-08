@@ -83,9 +83,42 @@ ans =
 epsilon, sem tilgreinir skekkjuna frá réttum punkti sem við sættum okkur við,
 $\Delta$, sem ákvarðar hversu lítill stigullinn má vera, þ.e.\ hversu nákvæmlega þetta er stöðupunktur.
 og hversu nálægt Jacobi fylkið sem við erum að athuga er frá því að vera óandhverfanlegt,
-en einnig hversu margar ítranir við viljum keyra, til að koma í veg fyrir að við lendum í óendanlegri lykkju
+en einnig hversu margar ítranir við viljum keyra, til að koma í veg fyrir að við lendum í óendanlegri lykkju.
+Einnig má það taka inn endapunkta hnitakerfisins, en það er notað til þess að reikna út h1, sem notuð er  við nákvæmni í útreiknun á stigli og Jacobi fylki fallsins.
 
 \lstinputlisting[language=Matlab]{newton_gradient.m}
+
+Keyrsla:
+\begin{lstlisting}
+>> f = @(x,y) x^2 + y^2
+
+f = 
+
+    @(x,y)x^2+y^2
+
+>> P = [-1,-1,1,1,-1;-1,1,1,-1,-1]
+
+P =
+
+    -1    -1     1     1    -1
+    -1     1     1    -1    -1
+
+>> x0 = [0.5;0.5]
+
+x0 =
+
+   0.500000000000000
+   0.500000000000000
+
+>> newton_gradient(f,0.001,0.001,100,x0,P)
+
+ans =
+
+     0
+     0
+
+\end{lstlisting}
+
 
 \section{Handstýrð leit að stöðupunktum}
 
@@ -102,7 +135,7 @@ en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um 
 \lstinputlisting[language=Matlab]{manualCriticalPointSearch.m}
 
 \subsection*{}
-forrit sem skilgreinir
+Forrit sem skilgreinir
 $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 \lstinputlisting[language=Matlab]{func2.m}
 
