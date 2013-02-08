@@ -40,7 +40,7 @@
 \maketitle
 \section*{Inngangur}
 
-Verkefni þetta snýst um að nota matlab til þess að leita að stöðupunktum í gefnu falli oog flokka þá. fyrst með því að leita handvirkt með því að teikna kassa utan um mögulega stöðupunkta út frá jafnhæðarferlum fallsins, og hins vegar með því að leita skipulega fyrir innan gefinn ramma.
+Verkefni þetta snýst um að nota matlab til þess að leita að stöðupunktum í gefnu falli og flokka þá. fyrst með því að leita handvirkt með því að teikna kassa utan um mögulega stöðupunkta út frá jafnhæðarferlum fallsins, og hins vegar með því að leita skipulega fyrir innan gefinn ramma.
 
 \section{Innlestur hnita frá mús}
 
@@ -89,16 +89,17 @@ Prufum að keyra þetta og dæla inn ferhyrning úr \lstinline{square} og núllp
 
 \begin{lstlisting}[language=Matlab]
 >> square_check([0; 0],square(-1,1,-1,1))
-
+:
 ans =
 
      1
 \end{lstlisting}
 
 \section{}
-Þetta forrit er forritið sem gerir mestu vinnuna, en það er forritið sem finnur fyrir okkur, með aðferð newtons, stöðupunkta fallsins. Það tekur inn falli sem á að athuga,
-epsilon, sem tilgreinir skekkjuna frá réttum punkti sem við sættum okkur við,
-$\Delta$, sem ákvarðar hversu lítill stigullinn má vera, þ.e.\ hversu nákvæmlega þetta er stöðupunktur.
+Þetta forrit er forritið sem gerir mestu vinnuna, en það er forritið sem finnur fyrir okkur, með aðferð newtons, stöðupunkta fallsins. Það tekur inn
+f:fallið sem á að athuga,
+epsilon: sem tilgreinir skekkjuna frá réttum punkti sem við sættum okkur við,
+$\Delta$ sem ákvarðar hversu lítill stigullinn má vera, það er\ hversu nákvæmlega þetta er stöðupunktur
 og hversu nálægt Jacobi fylkið sem við erum að athuga er frá því að vera óandhverfanlegt,
 en einnig hversu margar ítranir við viljum keyra, til að koma í veg fyrir að við lendum í óendanlegri lykkju.
 Einnig má það taka inn endapunkta hnitakerfisins, en það er notað til þess að reikna út h1, sem notuð er  við nákvæmni í útreiknun á stigli og Jacobi fylki fallsins.
