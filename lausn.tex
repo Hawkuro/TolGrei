@@ -1,23 +1,26 @@
-\documentclass{article}
+\documentclass[a4]{article}
+
 \usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
-\usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 \usepackage[utf8]{inputenc}
-
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,nohead]{geometry}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}%?essi l?na er til þess að taka inn latec kóða undir \begin{lstlisting}
 \usepackage{amsfonts}
-\usepackage{epstopdf}
+
 \title{Heimaverkefni 1}
-\author{Bjarki Geir Benediktsson \and Haukur Óskar þorgeirsson \and Matthías Páll Gissurarson \and Kennari: Máni Maríus viðarsson}
 \begin{document}
-\maketitle
+\begin{flushright}
+  Töluleg Greining, Heimaverkefni 1\\
+  \today{}\\
+  Bjarki Geir Benediktsson,\\
+  Haukur Óskar Þorgeirsson,\\
+  Matthías Páll Gissurarson
+  \end{flushleft}
 
 \section{}
-
 \lstinputlisting[language=Matlab]{square.m}
-
 
 \section{}
 
