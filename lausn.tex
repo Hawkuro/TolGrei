@@ -76,12 +76,18 @@ ans =
      1
 \end{lstlisting}
 \section{}
+Þetta forrit er forritið sem gerir mestu vinnuna, en það er forritið sem finnur fyrir okkur, með aðferð newtons, stöðupunkta fallsins. Það tekur inn falli sem á að athuga,
+epsilon, sem tilgreinir skekkjuna frá réttum punkti sem við sættum okkur við,
+$\Delta$, sem ákvarðar hversu lítill stigullinn má vera, þ.e.\ hversu nákvæmlega þetta er stöðupunktur.
+og hversu nálægt Jacobi fylkið sem við erum að athuga er frá því að vera óandhverfanlegt,
+en einnig hversu margar ítranir við viljum keyra, til að koma í veg fyrir að við lendum í óendanlegri lykkju
+
 \lstinputlisting[language=Matlab]{newton_gradient.m}
 
 \section{}
-\subsection*{fallið f úr lið i}
+\subsection*{Fallið f úr lið i}
 \lstinputlisting[language=Matlab]{func.m}
-\subsection*{forritið}
+\subsection*{Forritið}
 
 Athugið að mcode virðist ekki styðja íslenska stafi, en útprentað er
 ``Hápunktur í'', ``Lágpunktur í'' og ``Söðulpunktur í'', ef punktur finnst,
