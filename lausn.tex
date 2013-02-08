@@ -27,7 +27,7 @@
   Bjarki Geir Benediktsson,\\
   Haukur Óskar Þorgeirsson,\\
   Matthías Páll Gissurarson\\
-  \end{flushleft}
+\end{flushright}
 
 \begin{center}
  \textsc{ \LARGE Töluleg Greining\\
@@ -196,10 +196,17 @@ Söðulpunktur í (x,y) = (1.570796,-3.141593)
 Forrit sem skilgreinir
 $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 \lstinputlisting[language=Matlab]{func2.m}
-
-Einnig er wrapper fyrir fallið, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall úr commandline í matlab nema að það sé anonymous.
+Einnig er wrapper fyrir fallið, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall úr commandline í matlab nema að það sé anonymous.\\
 \lstinputlisting[language=Matlab]{func2wrapper.m}
 
-\section{}
+\section{Aukaliður}
+Fall sem skiptir svæðinu öllu í reiti og leitar kerfisbundið að stöðupunktum
+Fallið er keyrt á hliðstæðan hátt og handstýrða stöðupunktaleitin nema hvað bæta þarf inn fallgildinu boxes sem segir til um hve margar skiptingar á að gera á svæðinu á hvorn ás svo svæðinu er skipt í $boxes^2$ reiti og leitar innan hvers og eins reitar að sérstöðupunktum og flokkar þá sem hægt er 
 \lstinputlisting[language=Matlab]{automaticCriticalPointSearch.m}
+
+Að skýrsluni unnu : \\
+\vspace{10cm}
+\hspace{0.5cm} \makebox[1.5in]{\hrulefill}
+\hspace{0.5cm} \makebox[1.5in]{\hrulefill}
+\hspace{0.5cm} \makebox[1.5in]{\hrulefill}
 \end{document}
