@@ -56,7 +56,7 @@ Keyrt með \lstinline{square(-1,1,-1,1)} fæst:
 \caption{Ferhyrningur teiknaður}
 \end{figure}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Matlab]
 ans =
 
   Columns 1 through 4
@@ -87,7 +87,7 @@ Prufum að keyra þetta og dæla inn ferhyrning úr \lstinline{square} og núllp
 
 Úttak af skipanalínu MATLAB:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Matlab]
 >> square_check([0; 0],square(-1,1,-1,1))
 
 ans =
@@ -105,34 +105,53 @@ Einnig má það taka inn endapunkta hnitakerfisins, en það er notað til þes
 
 \lstinputlisting[language=Matlab]{newton_gradient.m}
 
-Keyrsla:
-\begin{lstlisting}
->> f = @(x,y) x^2 + y^2
-
-f = 
-
-    @(x,y)x^2+y^2
-
->> P = [-1,-1,1,1,-1;-1,1,1,-1,-1]
+Keyrsla með nokkrum dæmum. $\epsilon, \delta$ voru valin nógu lítil og $N$ nógu stórt þannig að forritið tæki ekki of langan tíma, en hinsvegar skilaði frekar nákvæmum niðurstöðum:
+\begin{lstlisting}[language=Matlab]
+>> P = [ -1,-1,1,1,-1;-1,1,1,-1,-1]
 
 P =
 
     -1    -1     1     1    -1
     -1     1     1    -1    -1
 
->> x0 = [0.5;0.5]
+>> f = @(x,y) x^2 + y^2
 
-x0 =
+f = 
 
-   0.500000000000000
-   0.500000000000000
+    @(x,y)x^2+y^2
 
->> newton_gradient(f,0.001,0.001,100,x0,P)
+>> newton_gradient(f,0.001,0.001,100,[0.5;0.5],P)
 
 ans =
 
      0
      0
+
+>> f = @(x,y) x*y
+
+f = 
+
+    @(x,y)x*y
+
+>> newton_gradient(f,0.001,0.001,100,[0.5;0.5],P)
+
+ans =
+
+     0
+     0
+
+>> f = @(x,y) sin(x) + cos(y)
+
+f = 
+
+    @(x,y)sin(x)+cos(y)
+
+>> newton_gradient(f,0.001,0.001,100,[-1.5;0.0],2*P)
+
+ans =
+
+  -1.570796327777076
+                   0
 
 \end{lstlisting}
 
@@ -151,11 +170,34 @@ en ``Ekki er hægt að segja til um (x,y) ='' ef ekki er hægt að segja til um 
 
 \lstinputlisting[language=Matlab]{manualCriticalPointSearch.m}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{manualdaemi1.eps}
+\caption{Prufun á manual search}
+\end{figure}
+
+Keyrslan á mynd 3 má sjá í eftirfarandi kóða:
+\begin{lstlisting}[language=Matlab]
+>>f = @(x,y) sin(x) + cos(y)
+
+f = 
+
+    @(x,y)sin(x)+cos(y)
+
+>> manualCriticalPointSearch(f,[-4,4,-4,4],0.001,0.001,100)
+Hápunktur í (x,y) = (1.570796,-0.000000), f(x,y) = 2.000000
+Söðulpunktur í (x,y) = (-1.570796,0.000000)
+Lágpunktur í (x,y) = (-1.570796,3.141593), f(x,y) = -2.000000
+Lágpunktur í (x,y) = (-1.570796,-3.141593), f(x,y) = -2.000000
+Söðulpunktur í (x,y) = (1.570796,-3.141593)
+\end{lstlisting}
+
 \subsection*{}
 Forrit sem skilgreinir
 $$f(x)=\sum_{j=1}^N \alpha_j e^{-\frac{||x-q_j||^2}{\epsilon}$$
 \lstinputlisting[language=Matlab]{func2.m}
-og wrapper fyrir það, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall út commandline í matlab nema að það sé anonymous.
+
+Einnig er wrapper fyrir fallið, sem einfaldar notkun þess í forritinu. Athugið að ekki er hægt að senda fall inn í fall úr commandline í matlab nema að það sé anonymous.
 \lstinputlisting[language=Matlab]{func2wrapper.m}
 
 \section{}
