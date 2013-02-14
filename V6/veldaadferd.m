@@ -1,10 +1,4 @@
-function x = veldaadferd()
-    A = [3 2 -2; -3 -1 3; 1 2 0];
-    x0 = [1;0;0];
-    veldaadferdworker(A,x0,5)
-end
-
-function lambda = veldaadferdworker(A,x,m)
+function lambda = veldaadferd(A,x,m)
     i = 0;
     x %Prentum ut x^(0), til ad sja rununa.
     while i < m
