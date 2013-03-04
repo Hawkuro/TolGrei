@@ -19,7 +19,8 @@
             plot(x,y,'o')
         end
     end
-
+    x=[x, x(1)]
+    y=[y, y(1)]
     % Stikum ferilinn svo við lendum ekki í veseni
     % ef x-hnitin eru ekki í stærðarröð
     n = length(x);  t = 1:n;  tt=linspace(1,n,100);
