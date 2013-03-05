@@ -31,7 +31,7 @@
             plot([x(2) x(1)], [y(2) y(1)], 'r')
             plot([x(4) x(3)], [y(4) y(3)], 'r')
             xx = baz(x,tt);
-            xxx = [xxx xx]
+            xxx = [xxx xx];
             yy = baz(y,tt);
             yyy = [yyy yy]
             plot(xx,yy)
