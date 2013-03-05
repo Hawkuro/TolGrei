@@ -10,9 +10,9 @@
     hold on
     hnappur=1;
     x = []; y = [];
-    n=2;
-    t=1:n;
-    tt=linspace(1,n,100);
+    n=4;
+    t=0:1;
+    tt=linspace(0,1,100);
 
     while hnappur==1
         [xtmp,ytmp,hnappur]=ginput(1);
@@ -28,11 +28,11 @@
             df2y = (y(4) - y(3));
             plot([x(2) x(1)], [y(2) y(1)], 'r')
             plot([x(4) x(3)], [y(4) y(3)], 'r')
-            xx = splaesi(t,x(2:3),2,df1x,df2x,tt);
-            yy = splaesi(t,y(2:3),2,df1y,df2y,tt);
+            xx = baz(x,tt);
+            yy = baz(y,tt);
             plot(xx,yy)
             
-            x = [(2*x(3)-x(4)) x(3)];
-            y = [(2*y(3)-y(4)) y(3)];
+            x = [x(4) (2*x(4)-x(3))];
+            y = [y(4) (2*y(4)-y(3))];
         end
     end
