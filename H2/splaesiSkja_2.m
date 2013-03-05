@@ -24,6 +24,8 @@
     df1y = (y(1)-y(end-1));
     df2x = (x(end) - x(end-2));
     df2y = (y(end) -y(end-2));
+    plot([x(1) x(end-1)], [y(1) y(end-1)], 'r')
+    plot([x(end-2) x(end)], [y(end-2) y(end)], 'r')
     x = x(1:end-2);
     y = y(1:end-2);
     
