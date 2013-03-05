@@ -26,7 +26,6 @@
     n = length(x);  t = 1:n;  tt=linspace(1,n,100);
 
     % Reiknum og teiknum
-    %Þarf að reikna út c0 og cn
     xx = splaesi(t,x,4,0,0,tt);
     yy = splaesi(t,y,4,0,0,tt);
 
