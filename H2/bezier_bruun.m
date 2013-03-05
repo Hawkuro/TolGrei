@@ -23,11 +23,13 @@
     % Stikum ferilinn svo við lendum ekki í veseni
     % ef x-hnitin eru ekki í stærðarröð
     n = length(x);  t = 1:n;  tt=linspace(0,1,100);
-
+    xx=[]
+    yy=[]
     % Reiknum og teiknum
     %Þarf að reikna út c0 og cn
-    xx = baz(x,tt);
-    yy = baz(y,tt);
-    
+    for i=1:floor(length(x)/4)-1
+        xx = [xx,baz(x((i)*4:(i+1)*4),tt)];
+        yy = [yy,baz(y((i)*4:(i+1)*4),tt)];
+    end
     plot(xx,yy)
     
