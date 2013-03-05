@@ -101,7 +101,7 @@ function yy = splaesi(x,y,numer,df1,df2,xx)
     % velja rétt hlutbil [x(i),x(i+1)[
     x(n) = x(n)+1;
     for i=1:m
-        j = max(find(x <= xx(i));
+        j = max(find(x <= xx(i)));
         tmp = xx(i)-x(j);
         yy(i) = a(j) + tmp*(b(j) + tmp*(c(j) + tmp*d(j)));
     end
@@ -111,7 +111,7 @@ function yy = splaesi(x,y,numer,df1,df2,xx)
 % Efaust virðist síðasti hluti forritsins vera svolítið undarlegur, 
 % svo við skulum skoða hann aðeins nánar. Við ætlum að ganga á
 %  xx  vigurinn og reikna gildi splæsifallsins í hverju staki í honum. 
-% Á hverju hlutbili er splæsifallið margliða, svo þegar við höfum 
+% �? hverju hlutbili er splæsifallið margliða, svo þegar við höfum 
 % ákvarðað á hvaða hlutbili verið erum er einfalt að finna gildi þess; 
 % vandamálið snýst þá um að finna um hvaða hlutbil [x_k , x_{k+1} [
 % er að ræða.
@@ -138,7 +138,7 @@ function yy = splaesi(x,y,numer,df1,df2,xx)
 % myndir; þegar skráin splaesiSkja.m er keyrð les hún inn nokkra punkta af 
 % skjá  og teiknar þriðja stigs splæsifall með ekki-hnúts endaskilyrðum 
 % í gegnum safnið. 
-% Áhugavert er að breyta endaskilyrðunum til að átta sig á muninum á þeim.
+% �?hugavert er að breyta endaskilyrðunum til að átta sig á muninum á þeim.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -176,4 +176,5 @@ function yy = splaesi(x,y,numer,df1,df2,xx)
     yy = splaesi(t,y,1,0,0,tt);
     
     plot(xx,yy)
+    
 
