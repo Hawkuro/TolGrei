@@ -33,7 +33,7 @@
             xx = baz(x,tt);
             xxx = [xxx xx];
             yy = baz(y,tt);
-            yyy = [yyy yy]
+            yyy = [yyy yy];
             plot(xx,yy)
             
             x = [x(4) (2*x(4)-x(3))];
