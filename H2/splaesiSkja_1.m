@@ -27,7 +27,7 @@
 
     % Reiknum og teiknum
     %Þarf að reikna út c0 og cn
-    xx = splaesi(t,x,1,0,0,tt);
-    yy = splaesi(t,y,1,0,0,tt);
+    xx = splaesi(t,x,4,0,0,tt);
+    yy = splaesi(t,y,4,0,0,tt);
 
     plot(xx,yy)
