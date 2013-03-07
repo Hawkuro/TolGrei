@@ -57,11 +57,16 @@
 %Bæta við mynd af keyrslu
 
 \subsection{Ferilteikning með Bezier-splæsibrúun}
-\lstinputlisting{bezier_bruun.m}
+\lstinputlisting{bezier_bruun3.m}
+Fallið baz þjónar sama tilgangi fyrir Bezier brúunina og splaesi gerði fyrir splæsibrúunina það tekur við lista af fjórum hnitum $(x_i)_{i=0}^3$ og lista $(t_i)_{i=1}^n$ af gildum á $[0,1]$ og skilar lista af gildum $(r(t_i))_{i=1}^n$ þar sem  r 
+$$r(t)=(1-t)^3x_0+3(1-t)^2tx_1+3(1-t)t^2x_2+t^3x_3$$
+nú fæst að með því að gefa baz y-hnit í stað x-hnita sem inntak skilar það lista af $s(t)$ gildum þar sem  
+$$s(t)=(1-t)^3y_0+3(1-t)^2ty_1+3(1-t)t^2y_2+t^3y_3$$
+en það eru þau gildi sem við þurfum til að geta framkvæmt Bezier brúunina
 \lstinputlisting{baz.m}
 \includegraphics{Einsogpdf.png}
 %Hér á að hafa inni fullt af myndarunki
-
+\section{Nálgun ǻ afleiðum,heildu, stiglum og Hessefylkjum}
 
 \vspace{20 mm}
 Að skýrsluni unnu :
