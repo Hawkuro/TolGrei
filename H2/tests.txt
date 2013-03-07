@@ -1,0 +1,82 @@
+%f'(0):
+%úr extrapolation kom:
+
+function r = R(f,a,h)
+    r = (f(a+h) + f(a-h))/(2*h);
+end
+
+>>[X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+X =
+
+     1
+
+
+mat1 =
+
+  2.6201e-012
+
+
+mat2 =
+
+  1.0235e-014
+  
+%Úr Richardson kom:
+
+>> [X,mat1,mat2]=richardson(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+X =
+
+     1
+
+
+mat1 =
+
+  2.6201e-012
+
+
+mat2 =
+
+  1.0235e-014
+
+%f''(0):
+%úr extrapolate:
+
+function r = R(f,a,h)
+    r = (f(a+h) + f(a-h) - 2*f(a))/(h*h);
+end
+
+>> [X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+X =
+
+     0
+
+
+mat1 =
+
+     0
+
+
+mat2 =
+
+     0
+
+%Richardson reiknar bara f', þannig að skiptum út fyrir cos(x) = sin'(x)
+
+>> [X,mat1,mat2]=richardson(@(x)cos(x), 0, 0.5, 100, 1e-10)
+
+X =
+
+     0
+
+
+mat1 =
+
+     0
+
+
+mat2 =
+
+     0
+
