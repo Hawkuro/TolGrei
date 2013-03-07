@@ -22,7 +22,7 @@
             x = [x, xtmp];
             y = [y, ytmp];
             plot(x,y,'o')
-        end
+        end        
         if hnappur==1&length(x) == 4
             df1x = (x(2)-x(1));
             df1y = (y(2)-y(1));
