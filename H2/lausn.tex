@@ -1,13 +1,13 @@
 \documentclass[a4]{article}
 
-\usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
+\usepackage[icelandic]{babel}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{sidecap}
 \usepackage[utf8]{inputenc}
 \usepackage[left=1in,top=1in,right=1in,bottom=1in,nohead]{geometry}
-\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{../mcode}
 \usepackage{amsfonts}
 \usepackage{epstopdf}
 
@@ -19,8 +19,6 @@
   Matthías Páll Gissurarson \and
   Kennari: Máni Maríus Viðarsson
   }
-
-
 
 \begin{document}
 \begin{flushright}
@@ -48,36 +46,106 @@
 %%%%%%%%%%%%%%
 \section{Feristeikning með splæsibrúun}
 \subsection{Teikning með aflestri af skjá}
+\lstinputlisting[inputencoding=utf8]{splaesiSkja_1.m}
 \subsection{Teikning á lokuðum ferlum með aflestri af skjá}
-\lstinputlisting{splaesiSkja_1.m}
 %Bæta við mynd af keyrslu
 
 \subsubsection{Teikning á þvinguðum ferlum með aflestri af skjá }
-\lstinputlisting{splaesiSkja_2.m}
+\lstinputlisting[inputencoding=utf8]{splaesiSkja_2.m}
 %Bæta við mynd af keyrslu
 \subsection{Ferilteikning með Bezier-splæsibrúun}
-\lstinputlisting{bezier_bruun3.m}
+\lstinputlisting[inputencoding=utf8]{bezier_bruun3.m}
 Fallið baz þjónar sama tilgangi fyrir Bezier brúunina og splaesi gerði fyrir splæsibrúunina það tekur við lista af fjórum hnitum $(x_i)_{i=0}^3$ og lista $(t_i)_{i=1}^n$ af gildum á $[0,1]$ og skilar lista af gildum $(r(t_i))_{i=1}^n$ þar sem  r 
 $$r(t)=(1-t)^3x_0+3(1-t)^2tx_1+3(1-t)t^2x_2+t^3x_3$$
-nú fæst að með því að gefa baz y-hnit í stað x-hnita sem inntak skilar það lista af $s(t)$ gildum þar sem  
+nú fæst að með því að gefa baz y-hnit í stað x-hnita sem inntak skilar það lista af $s(t)$ gildum þar sem  
 $$s(t)=(1-t)^3y_0+3(1-t)^2ty_1+3(1-t)t^2y_2+t^3y_3$$
 en það eru þau gildi sem við þurfum til að geta framkvæmt Bezier brúunina
-\lstinputlisting{baz.m}
+\lstinputlisting[inputencoding=utf8]{baz.m}
 \includegraphics[height=0.495\textheight]{mynd21.eps}\\
 \includegraphics[height=0.495\textheight]{mynd22.eps}\\
 \includegraphics[width=\textwidth]{mamma1.eps}\\
 \includegraphics[height=0.495\textheight]{mamma2.eps}\\
 \includegraphics[width=\textwidth]{fill.eps}
-hér mætti leyfa notenda að rjúfa ferilin með það er að vera með punkta sem ekki væri teiknað ǻ milli 
-Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa verið settir inn til að laga ferilin til
+hér mætti leyfa notenda að rjúfa ferilin með það er að vera með punkta sem ekki væri teiknað á milli 
+Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa verið settir inn til að laga ferilin til
 %Hér á að hafa inni fullt af myndarunki
-\section{Nálgun ǻ afleiðum,heildu, stiglum og Hessefylkjum}
+\section{Nálgun á afleiðum,heildu, stiglum og Hessefylkjum}
 \subsection{Almenn útgiskun}
-\lstinputlisting{extrapolation.m}
+\lstinputlisting[inputencoding=utf8]{extrapolation.m}
 
 \subsection{Richardson}
-\lstinputlisting[language=matlab,linrange=1-100{tests.txt}
+Prófun fyrir f'(0):
+Úr extrapolation kom:
+\begin{lstlisting}
+  function r = R(f,a,h)
+      r = (f(a+h) + f(a-h))/(2*h);
+  end
+
+  >>[X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+  X = 1 
+
+  mat1 = 2.6201e-012
+
+  mat2 = 1.0235e-014 
+\end{lstlisting}
+
+og úr Richardson kom:
+\begin{lstlisting}
+  >> [X,mat1,mat2]=richardson(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+  X = 1
+
+  mat1 = 2.6201e-012
+
+  mat2 = 1.0235e-014
+\end{lstlisting}
+Prófun fyrir f''(0):
+úr extrapolate kom
+\begin{lstlisting}
+  function r = R(f,a,h)
+    r = (f(a+h) + f(a-h) - 2*f(a))/(h*h);
+  end
+
+  >> [X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
+
+  X = 0
+
+  mat1 = 0
+
+  mat2 = 0
+\end{lstlisting}
+
+Þar sem Richardson reiknar bara f', þannig að skiptum út fyrir cos(x) = sin'(x) til þess að prófa, en það gaf:
+\begin{lstlisting}
+  >> [X,mat1,mat2]=richardson(@(x)cos(x), 0, 0.5, 100, 1e-10)
+
+  X = 0
+
+  mat1 = 0
+
+  mat2 = 0
+\end{lstlisting}
+
 \subsection{Romberg}
+R fallið:
+\lstinputlisting[inputencoding=utf8]{R.m}
+Útkoma
+Keyrsla með $\sin(x)$
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) sin(x),0,pi/2,100,1e-10)
+X = 1.0000
+mat1 = 1.9832e-012
+mat2 = 1.9368e-015
+\end{lstlisting}  
+Annað dæmi með $e^x$
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) exp(x),0,1,100,1e-10)
+X = 1.7183
+mat1 = 3.2863e-014
+mat2 = 3.2124e-017
+\end{lstlisting}
+
 \subsection{Nálgun á stiglum}
 \subsection{Nálgun á Hessefylkjum}
 \vspace{20 mm}

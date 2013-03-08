@@ -1,4 +1,4 @@
-% Notar fallið splaesi.
+% Notar fallid splaesi.
     close all
     clear all
 
@@ -29,12 +29,12 @@
     x = x(1:end-2);
     y = y(1:end-2);
     
-    % Stikum ferilinn svo við lendum ekki í veseni
-    % ef x-hnitin eru ekki í stærðarröð
+    % Stikum ferilinn svo vid lendum ekki i veseni
+    % ef x-hnitin eru ekki i staerdarrod
     n = length(x);  t = 1:n;  tt=linspace(1,n,100);
 
     % Reiknum og teiknum
-    %Þarf að reikna út c0 og cn
+    %Tharf ad reikna ut c0 og cn
     xx = splaesi(t,x,2,df1x,df2x,tt);
     yy = splaesi(t,y,2,df1y,df2y,tt);
     
