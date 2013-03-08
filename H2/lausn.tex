@@ -74,8 +74,8 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 \lstinputlisting[inputencoding=utf8]{extrapolation.m}
 
 \subsection{Richardson}
-%f'(0):
-%úr extrapolation kom:
+Prófun fyrir f'(0):
+Úr extrapolation kom:
 \begin{lstlisting}
   function r = R(f,a,h)
       r = (f(a+h) + f(a-h))/(2*h);
@@ -89,8 +89,8 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 
   mat2 = 1.0235e-014 
 \end{lstlisting}
-%Úr Richardson kom:
 
+og úr Richardson kom:
 \begin{lstlisting}
   >> [X,mat1,mat2]=richardson(@(x)sin(x), 0, 0.5, 100, 1e-10)
 
@@ -100,8 +100,8 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 
   mat2 = 1.0235e-014
 \end{lstlisting}
-%f''(0):
-%úr extrapolate:
+Prófun fyrir f''(0):
+úr extrapolate kom
 \begin{lstlisting}
   function r = R(f,a,h)
     r = (f(a+h) + f(a-h) - 2*f(a))/(h*h);
@@ -115,8 +115,8 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 
   mat2 = 0
 \end{lstlisting}
-%Richardson reiknar bara f', þannig að skiptum út fyrir cos(x) = sin'(x)
 
+Þar sem Richardson reiknar bara f', þannig að skiptum út fyrir cos(x) = sin'(x) til þess að prófa, en það gaf:
 \begin{lstlisting}
   >> [X,mat1,mat2]=richardson(@(x)cos(x), 0, 0.5, 100, 1e-10)
 
@@ -128,15 +128,17 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 \end{lstlisting}
 
 \subsection{Romberg}
+R fallið:
 \lstinputlisting[inputencoding=utf8]{R.m}
 Útkoma
+Keyrsla með $\sin(x)$
 \begin{lstlisting}
 >> [X,mat1,mat2]=extrapolation(@(x) sin(x),0,pi/2,100,1e-10)
 X = 1.0000
 mat1 = 1.9832e-012
 mat2 = 1.9368e-015
 \end{lstlisting}  
-Annað dæmi:
+Annað dæmi með $e^x$
 \begin{lstlisting}
 >> [X,mat1,mat2]=extrapolation(@(x) exp(x),0,1,100,1e-10)
 X = 1.7183
