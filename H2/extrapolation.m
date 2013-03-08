@@ -1,8 +1,7 @@
 %
-% Matlab-forrit sem reiknar ut nalgun a f'(a) med
-% Richardson-utgiskun ut fra midsettri mismunaformulu
+% Matlab-forrit sem reiknar ut nalgun a hverju şví sem R.m skilgreinir
+% meğ útgiskun
 %
-% R(h)=(f(a+h)-f(a-h))/(2h)
 %
 % Inn fara: fallid f, sem skilgreint er med fallbreytu
 %           a - punkturinn,

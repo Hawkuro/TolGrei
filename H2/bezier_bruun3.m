@@ -1,4 +1,5 @@
-% Notar fallid splaesi.
+% Teikniforrit sem notar bezier-brúun milli punkta sem teiknaðir eru til að
+% teikna myndir.
     close all
     clear all
 

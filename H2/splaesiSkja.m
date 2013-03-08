@@ -1,4 +1,4 @@
-
+%Forrit sem útfærir splæsibrúun með not-a-knot endaskilyrðum
     close all
     clear all
     

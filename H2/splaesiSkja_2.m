@@ -1,4 +1,4 @@
-% Notar fallid splaesi.
+%Forrit sem útfærir splæsibrúun með þvinguðum endaskilyrðum
     close all
     clear all
 
