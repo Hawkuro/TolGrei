@@ -1,0 +1,6 @@
+*.log
+*.dvi
+*.tex.orig
+*.aux
+mcode.sty
+*~
