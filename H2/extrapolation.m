@@ -1,17 +1,17 @@
 %
-% Matlab-forrit sem reiknar út nálgun á f'(a) með
-% Richardson-útgiskun út frá miðsettri mismunaformúlu
+% Matlab-forrit sem reiknar ut nalgun a f'(a) med
+% Richardson-utgiskun ut fra midsettri mismunaformulu
 %
 % R(h)=(f(a+h)-f(a-h))/(2h)
 %
-% Inn fara: fallið f, sem skilgreint er með fallbreytu
+% Inn fara: fallid f, sem skilgreint er med fallbreytu
 %           a - punkturinn,
-%           h - upphafsgildi á skreflengd,
-%           imax - hámarksfjöldi ítrekana,
-%           epsilon - nákvæmniskrafan.
-% Út koma:  X - aftasta gildið í Richardson útgiskunartöflunni.
-%           mat1 - svartsýna eftirámatið á skekkju, D(i,i)-D(i-1,i-1).
-%           mat2 - brjartsýna eftirámatið á skekkju, D(i,i)-D(i,i-1).
+%           h - upphafsgildi a skreflengd,
+%           imax - hamarksfjoldi itrekana,
+%           epsilon - nakvaemniskrafan.
+% Ut koma:  X - aftasta gildid i Richardson utgiskunartoflunni.
+%           mat1 - svartsyna eftiramatid a skekkju, D(i,i)-D(i-1,i-1).
+%           mat2 - brjartsyna eftiramatid a skekkju, D(i,i)-D(i,i-1).
 %
 function [X,mat1,mat2]=extrapolation(f,a,h0,imax,epsilon)
 h=h0;
