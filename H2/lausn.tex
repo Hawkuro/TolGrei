@@ -131,7 +131,15 @@ Prófun fyrir f''(0):
 
 \subsection{Romberg}
 R fallið:
-\lstinputlisting[inputencoding=utf8]{R.m}
+\begin{lstlisting}
+function r = R(f,a,h,n)
+    r=0;
+    for i=0:n
+        r = r + h*f(a+i*h);
+    end
+    r = r - h/2*(f(a) + f(a+n*h));
+end
+\end{lstlisting}
 Útkoma
 Keyrsla með $\sin(x)$
 \begin{lstlisting}
@@ -149,6 +157,29 @@ mat2 = 3.2124e-017
 \end{lstlisting}
 
 \subsection{Nálgun á stiglum}
+\begin{lstlisting}
+function r = R(f,a,h)
+    r=[(f(a+h*[1 0]) - f(a-h*[1 0]))/(2*h);(f(a+h*[0 1]) - f(a-h*[0 1]))/(2*h)];
+end
+\end{lstlisting}
+
+Keyrsla með $f(x) = x^2_1 - x^2_2$ og punktinn (1,1)
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
+X(:,:,1) = 2
+X(:,:,2) = -2
+mat1 = 0
+mat2 = 0
+\end{lstlisting}
+
+Annað dæmi með $sin(x_1)*cos(x_2)$:
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) sin(x(1))*cos(x(2)),[1 1],1,100,1e-10)
+X(:,:,1) = 0.2919
+X(:,:,2) = -0.7081
+mat1 = 1.7925e-014
+mat2 = 1.7522e-017 
+\end{lstlisting}
 \subsection{Nálgun á Hessefylkjum}
 \vspace{20 mm}
 Að skýrsluni unnu :
