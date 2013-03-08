@@ -16,7 +16,7 @@
 function [X,mat1,mat2]=extrapolation(f,a,h0,imax,epsilon)
 h=h0;
 D=zeros(imax,imax,length(a));
-D(1,1,:,:)=R(f,a,h);
+D(1,1,:)=R(f,a,h);
 i=2;
 h=h/2;
 mat1=2*epsilon;
