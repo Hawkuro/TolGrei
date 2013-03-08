@@ -1,7 +1,3 @@
-function r = R(f,a,h,n)
-    r=0;
-    for i=0:n
-        r = r + h*f(a+i*h);
-    end
-    r = r - h/2*(f(a) + f(a+n*h));
+function r = R(f,a,h)
+    r=[(f(a+h*[1 0]) - f(a-h*[1 0]))/(2*h);(f(a+h*[0 1]) - f(a-h*[0 1]))/(2*h)];
 end
