@@ -179,6 +179,7 @@ mat2 = 1.7522e-017
 
 \subsection{Nálgun á Hessefylkjum}
 
+R fallið:
 \begin{lstlisting}
 function r = R(f,a,h)
     A = (f(a + h*[1 0]) +f(a-h*[1 0]) - 2*f(a))/(h*h);
@@ -188,6 +189,7 @@ function r = R(f,a,h)
 end
 \end{listing}
 
+Keyrsla með $f(x) = x^2_1 - x^2_2$ og punktinn (1,1)
 \begin{lstlisting}
 >> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
 X =  2     0
@@ -196,14 +198,14 @@ mat1 = 0
 mat2 = 0
 \end{lstlisting}
 
-Annað dæmi:
+Annað dæmi (breytt fylki):
 \begin{lstlisting}
 >> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
 X =-0.4546   -0.4546
    -0.4546   -0.4546
 mat1 = 1.8373e-012
 mat2 = 1.7942e-015
-\end{lstlisting}
+\end{listing}
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
