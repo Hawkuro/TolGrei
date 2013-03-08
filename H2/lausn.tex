@@ -198,9 +198,9 @@ mat1 = 0
 mat2 = 0
 \end{lstlisting}
 
-Annað dæmi (breytt fylki):
+Annað dæmi með $sin(x_1)*cos(x_2)$:
 \begin{lstlisting}
->> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
+>> [X,mat1,mat2]=extrapolation(@(x) sin(x(1))*cos(x(2)),[1 1],1,100,1e-10)
 X =-0.4546   -0.4546
    -0.4546   -0.4546
 mat1 = 1.8373e-012
