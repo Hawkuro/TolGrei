@@ -50,11 +50,10 @@
 \subsection{Teikning með aflestri af skjá}
 \lstinputlisting[inputencoding=utf8]{splaesiSkja_1.m}
 \subsection{Teikning á lokuðum ferlum með aflestri af skjá}
-%Bæta við mynd af keyrslu
-
+\includegraphics[height=0.495\textheight]{Ss1.eps}\\
 \subsubsection{Teikning á þvinguðum ferlum með aflestri af skjá }
 \lstinputlisting[inputencoding=utf8]{splaesiSkja_2.m}
-%Bæta við mynd af keyrslu
+\includegraphics[height=0.495\textheight]{Ss2.eps}\\
 \subsection{Ferilteikning með Bezier-splæsibrúun}
 \lstinputlisting[inputencoding=utf8]{bezier_bruun3.m}
 Fallið baz þjónar sama tilgangi fyrir Bezier brúunina og splaesi gerði fyrir splæsibrúunina það tekur við lista af fjórum hnitum $(x_i)_{i=0}^3$ og lista $(t_i)_{i=1}^n$ af gildum á $[0,1]$ og skilar lista af gildum $(r(t_i))_{i=1}^n$ þar sem  r 
@@ -179,6 +178,31 @@ mat2 = 1.7522e-017
 \end{lstlisting}
 
 \subsection{Nálgun á Hessefylkjum}
+
+\begin{lstlisting}
+function r = R(f,a,h)
+    A = (f(a + h*[1 0]) +f(a-h*[1 0]) - 2*f(a))/(h*h);
+    C = (f(a + h*[0 1]) +f(a-h*[0 1]) - 2*f(a))/(h*h);
+    B = (f(a + h*[1 0] + h*[0 1]) - f(a + h*[1 0] - h*[0 1]) - f(a - h*[1 0] + h*[0 1]) + f(a - h*[1 0] - h*[0 1]))/(4*h*h);
+    r=[A B; B C];
+end
+\end{listing}
+
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
+X =  2     0
+     0    -2
+mat1 = 0
+mat2 = 0
+\end{listing}
+Annað dæmi:
+\begin{lstlisting}
+>> [X,mat1,mat2]=extrapolation(@(x) x(1)^2 - x(2)^2,[1 1],1,100,1e-10)
+X =-0.4546   -0.4546
+   -0.4546   -0.4546
+mat1 = 1.8373e-012
+mat2 = 1.7942e-015
+\end{listing}
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
