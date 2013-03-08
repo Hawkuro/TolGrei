@@ -1,4 +1,4 @@
-%Forrit sem útfærir splæsibrúun með not-a-knot endaskilyrðum
+%Forrit sem utfaerir splaesibruun med not-a-knot endaskilyrdum
     close all
     clear all
     

@@ -1,4 +1,4 @@
-% Forrit sem útfærir splæsibrúun með lotubundnum endaskilyrðum
+% Forrit sem utfaerir splaesibruun með lotubundnum endaskilyrdum
     close all
     clear all
 

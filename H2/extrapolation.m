@@ -1,6 +1,6 @@
 %
-% Matlab-forrit sem reiknar ut nalgun a hverju şví sem R.m skilgreinir
-% meğ útgiskun
+% Matlab-forrit sem reiknar ut nalgun a hverju thvi sem R.m skilgreinir
+% meğ utgiskun
 %
 %
 % Inn fara: fallid f, sem skilgreint er med fallbreytu

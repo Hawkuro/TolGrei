@@ -1,4 +1,4 @@
-%Forrit sem útfærir splæsibrúun með þvinguðum endaskilyrðum
+%Forrit sem utfærir splaesibruun með thvingudum endaskilyrdum
     close all
     clear all
 

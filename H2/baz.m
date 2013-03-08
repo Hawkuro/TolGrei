@@ -1,4 +1,4 @@
-%Fall sem reiknar út gildin í ferlinum fyrir bezier bruun
+%Fall sem reiknar ut gildin i ferlinum fyrir bezier bruun
 
 function yy = baz( y, tt)   
     for i=1:length(tt)
