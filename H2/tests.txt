@@ -1,3 +1,5 @@
+%2.2:
+
 %f'(0):
 %úr extrapolation kom:
 
@@ -79,4 +81,35 @@ mat1 =
 mat2 =
 
      0
+	 
 
+%2.3:
+
+%R.m:
+function r = R(f,a,h,n)
+    r=0;
+    for i=0:n
+        r = r + h*f(a+i*h);
+    end
+    r = r - h/2*(f(a) + f(a+n*h));
+end
+
+%Útkoma:
+
+>> [X,mat1,mat2]=extrapolation(@(x) sin(x),0,pi/2,100,1e-10)
+X =
+    1.0000
+mat1 =
+  1.9832e-012
+mat2 =
+  1.9368e-015
+  
+%Annað dæmi:
+
+>> [X,mat1,mat2]=extrapolation(@(x) exp(x),0,1,100,1e-10)
+X =
+    1.7183
+mat1 =
+  3.2863e-014
+mat2 =
+  3.2124e-017

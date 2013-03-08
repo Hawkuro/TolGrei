@@ -15,12 +15,14 @@
 %
 function [X,mat1,mat2]=extrapolation(f,a,h0,imax,epsilon)
 h=h0;
-D(1,1)=R(f,a,h);
+n = 1;
+D(1,1)=R(f,a,h,n);
 i=2;
 h=h/2;
+n=n*2;
 mat1=2*epsilon;
 while i<=imax & abs(mat1)>epsilon
-    D(i,1)=R(f,a,h);
+    D(i,1)=R(f,a,h,n);
     for j=2:i
         mat2=(1/(4^(j-1)-1))*(D(i,j-1)-D(i-1,j-1));
         D(i,j)=D(i,j-1)+mat2;
@@ -29,6 +31,7 @@ while i<=imax & abs(mat1)>epsilon
     X=D(i,i);
     i=i+1;
     h=h/2;
+    n=n*2;
 end
 mat2=norm(mat2);
 end
