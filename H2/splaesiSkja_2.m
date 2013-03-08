@@ -1,4 +1,4 @@
-%Forrit sem utfærir splaesibruun með thvingudum endaskilyrdum
+%Forrit sem utfaerir splaesibruun med thvingudum endaskilyrdum
     close all
     clear all
 

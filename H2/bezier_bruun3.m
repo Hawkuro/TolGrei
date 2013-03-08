@@ -1,4 +1,4 @@
-% Teikniforrit sem notar bezier-bruun milli punkta sem teiknadir eru til að
+% Teikniforrit sem notar bezier-bruun milli punkta sem teiknadir eru til ad
 % teikna myndir.
     close all
     clear all
