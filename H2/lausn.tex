@@ -77,18 +77,18 @@ Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa ver
 
 \subsection{Richardson}
 Prófun fyrir f'(0):
-Úr extrapolation kom:
+R fallið:
 \begin{lstlisting}
   function r = R(f,a,h)
       r = (f(a+h) + f(a-h))/(2*h);
   end
+\end{lstlisting}
 
+Úr extrapolation kom:
+\begin{lstlisting}
   >>[X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
-
   X = 1 
-
   mat1 = 2.6201e-012
-
   mat2 = 1.0235e-014 
 \end{lstlisting}
 
@@ -103,29 +103,26 @@ og úr Richardson kom:
   mat2 = 1.0235e-014
 \end{lstlisting}
 Prófun fyrir f''(0):
-úr extrapolate kom
+R fallið:
 \begin{lstlisting}
   function r = R(f,a,h)
     r = (f(a+h) + f(a-h) - 2*f(a))/(h*h);
   end
+\end{lstlisting}
 
+úr extrapolate kom
+\begin{lstlisting}
   >> [X,mat1,mat2]=extrapolation(@(x)sin(x), 0, 0.5, 100, 1e-10)
-
   X = 0
-
   mat1 = 0
-
   mat2 = 0
 \end{lstlisting}
 
 Þar sem Richardson reiknar bara f', þannig að skiptum út fyrir cos(x) = sin'(x) til þess að prófa, en það gaf:
 \begin{lstlisting}
   >> [X,mat1,mat2]=richardson(@(x)cos(x), 0, 0.5, 100, 1e-10)
-
   X = 0
-
   mat1 = 0
-
   mat2 = 0
 \end{lstlisting}
 
@@ -180,7 +177,7 @@ X(:,:,2) = -0.7081
 mat1 = 1.7925e-014
 mat2 = 1.7522e-017 
 \end{lstlisting}
-k
+
 \subsection{Nálgun á Hessefylkjum}
 \vspace{20 mm}
 Að skýrsluni unnu :
