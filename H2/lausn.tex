@@ -46,16 +46,15 @@
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
-\section*{Feristeikning með splæsibrúun}
-\subsection*{Teikning á lokuðum ferlum með aflestri af skjá}
+\section{Feristeikning með splæsibrúun}
+\subsection{Teikning með aflestri af skjá}
+\subsection{Teikning á lokuðum ferlum með aflestri af skjá}
 \lstinputlisting{splaesiSkja_1.m}
 %Bæta við mynd af keyrslu
-
 
 \subsubsection{Teikning á þvinguðum ferlum með aflestri af skjá }
 \lstinputlisting{splaesiSkja_2.m}
 %Bæta við mynd af keyrslu
-
 \subsection{Ferilteikning með Bezier-splæsibrúun}
 \lstinputlisting{bezier_bruun3.m}
 Fallið baz þjónar sama tilgangi fyrir Bezier brúunina og splaesi gerði fyrir splæsibrúunina það tekur við lista af fjórum hnitum $(x_i)_{i=0}^3$ og lista $(t_i)_{i=1}^n$ af gildum á $[0,1]$ og skilar lista af gildum $(r(t_i))_{i=1}^n$ þar sem  r 
@@ -64,10 +63,21 @@ nú fæst að með því að gefa baz y-hnit í stað x-hnita sem inntak skila
 $$s(t)=(1-t)^3y_0+3(1-t)^2ty_1+3(1-t)t^2y_2+t^3y_3$$
 en það eru þau gildi sem við þurfum til að geta framkvæmt Bezier brúunina
 \lstinputlisting{baz.m}
-\includegraphics{Einsogpdf.png}
+\includegraphics[height=0.495\textheight]{mynd21.eps}\\
+\includegraphics[height=0.495\textheight]{mynd22.eps}\\
+\includegraphics[width=\textwidth]{mamma1.eps}\\
+\includegraphics[height=0.495\textheight]{mamma2.eps}\\
+hér mætti leyfa notenda að rjúfa ferilin með það er að vera með punkta sem ekki væri teiknað ǻ milli 
+Auk þess væri mjög sniðugt að geta hreyft punktana eftir að þeir hafa verið settir inn til að laga ferilin til
 %Hér á að hafa inni fullt af myndarunki
 \section{Nálgun ǻ afleiðum,heildu, stiglum og Hessefylkjum}
+\subsection{Almenn útgiskun}
+\inputlstlisting{extrapolation.m}
 
+\subsection{Richardson}
+\subsection{Romberg}
+\subsection{Nálgun á stiglum}
+\subsection{Nálgun á Hessefylkjum}
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
