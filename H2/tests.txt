@@ -168,6 +168,7 @@ mat2 =
 	 
 %Annað dæmi:
 
+>> [X,mat1,mat2]=extrapolation(@(x) sin(x(1))*cos(x(2)),[1 1],1,100,1e-10)
 X =
    -0.4546   -0.4546
    -0.4546   -0.4546
