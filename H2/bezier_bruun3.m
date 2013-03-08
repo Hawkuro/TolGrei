@@ -1,4 +1,4 @@
-% Notar fallið splaesi.
+% Notar fallid splaesi.
     close all
     clear all
 

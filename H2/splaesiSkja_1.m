@@ -21,8 +21,8 @@
     end
     x=[x, x(1)];
     y=[y, y(1)];
-    % Stikum ferilinn svo við lendum ekki í veseni
-    % ef x-hnitin eru ekki í stærðarröð
+    % Stikum ferilinn svo vid lendum ekki i veseni
+    % ef x-hnitin eru ekki i staerdarrod
     n = length(x);  t = 1:n;  tt=linspace(1,n,100);
 
     % Reiknum og teiknum
