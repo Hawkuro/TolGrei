@@ -43,10 +43,34 @@ Höfum að $R(h) = \frac{f(a+h) + f(a-h) - 2f(a)}{h^2}$ og, vegna þess hvernig 
 
 Setjum upp í töflu:
 
-\begin{tabular}{l|lll}
+\begin{tabular}{l|ll}
 $h$&$D(i,0)$&$D(i,1)$\\ \hline
-0.2&\\
-0.1&\\
+0.2&9,178025\\
+0.1&8,945900&8,868525\\
+\end{tabular}\\
+
+Fáum út úr þessu nálgunina $8,868525$, með skekkjumat $7,7375 \times 10^{-2}$
+
+\subsection{}
+
+Höfum nú 
+\[R(i,0)=T(h_i)=\sum_{k=0}^{2^i-1}h(\frac{1}{2}f(x_k) + \frac{1}{2}f(x_{i+k})),\quad i=0,1,2\, , \quad h=\frac{(0.4)}{2^i},\quad x_k =  -0.2 + kh\]
+
+\[
+R(i,j)=R(i,j-1) + \frac{1}{4^j-1}(R(i,j-1)-R(i-1,j-1))
+\]
+
+Fáum því eftirfarandi töflu:
+
+\begin{tabular}{l|lll}
+$h$&$R(i,0)$&$R(i,1)$&$R(i,2)$\\ \hline
+0.4&0.4734242\\
+0.2&0.4367121&0.42447473\\
+0.1&0.42730195&0.42416523&0.4241445967\\
 \end{tabular}
+
+Þannig að við fáum nálgunina 0.4241445966 með skekkjumatið $2.06 \times 10^{-5}$
+
+\section{}
 
 \end{document}
