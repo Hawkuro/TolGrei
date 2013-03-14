@@ -1,0 +1,52 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc} 
+\usepackage[icelandic]{babel} 
+\usepackage[utf8]{inputenc} 
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[margin=3cm]{geometry}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\input{kvmacros}
+
+\newcommand{\Nz}{\mathbb{N}_0}
+\newcommand{\ilc}{\lstinline}
+\renewcommand{\thesubsection}{\alph{subsection})}
+\newcommand{\fig}[3]{\begin{figure}[h!]
+\centering
+\includegraphics#1{#2}
+\caption{#3}
+\end{figure}}
+
+\begin{document}
+
+\title{Töluleg Greining\\Vikublað 10}
+\author{ 
+  Bjarki Geir Benediktsson,\and
+  Haukur Óskar Þorgeirsson,\and
+  Matthías Páll Gissurarson \and
+  Kennari: Máni Maríus Viðarsson
+  }
+\maketitle
+
+\setcounter{section}{8}
+
+\section{16. júní 2011}
+
+\subsection{}
+
+Höfum að $R(h) = \frac{f(a+h) + f(a-h) - 2f(a)}{h^2}$ og, vegna þess hvernig punktarnir sem gefnir eru dreifast, $h=0.2$ og $a=0$.\\
+
+Setjum upp í töflu:
+
+\begin{tabular}{l|lll}
+$h$&$D(i,0)$&$D(i,1)$\\ \hline
+0.2&\\
+0.1&\\
+\end{tabular}
+
+\end{document}
