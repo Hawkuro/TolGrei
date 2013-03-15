@@ -71,6 +71,28 @@ $h$&$R(i,0)$&$R(i,1)$&$R(i,2)$\\ \hline
 
 Þannig að við fáum nálgunina 0.4241445966 með skekkjumatið $2.06 \times 10^{-5}$
 
-\section{}
+\setcounter{section}{8}
+
+\section{6. maí 2011}
+\subsection{}
+til að fá skekkju minni en 0.01 höfum við $$h^4=\frac{180*0.01}{\alpha},\ \alpha = \max_{ x \in [1,2]}f(x) $$
+hlutbillengdin þarf þá að vera minni en $$\sqrt[4]{\frac{1.8\cdot 2}{\pi^3}}\approx 0.58$$
+og þá er 0.5 gott val því það er stærsta talan lægri en 0.58 sem gengur upp í 1 
+\subsection{}
+\[R(i,0)=T(h_i)=\sum_{k=0}^{2^i-1}h(\frac{1}{2}f(x_k) + \frac{1}{2}f(x_{i+k})),\quad i=0,1,2\, , \quad h=\frac{(1)}{2^i},\quad x_k =  1 + kh\]
+
+\[
+R(i,j)=R(i,j-1) + \frac{1}{4^j-1}(R(i,j-1)-R(i-1,j-1))
+\]
+
+Fáum því eftirfarandi töflu:
+
+\begin{tabular}{l|lll}
+$h$&$R(i,0)$&$R(i,1)$&$R(i,2)$\\ \hline
+1	&0\\
+0.5	&-1.03033&-1.3737733\\
+0.25	&-1.239&-1.308556666&-1.304208891\\
+\end{tabular}
+Þannig að við fáum nálgunina -1.304208891
 
 \end{document}
