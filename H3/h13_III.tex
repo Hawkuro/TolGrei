@@ -1,0 +1,513 @@
+\documentclass[11pt,icelandic]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mcode}
+\usepackage{listingsutf8}
+\usepackage{babel}
+\usepackage{t1enc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvips]{graphicx}      % usual driver
+%\usepackage{pictex}
+\selectlanguage{icelandic}
+\columnsep=0.5truecm
+\columnseprule=.01truecm
+\hoffset=-2.2truecm
+\voffset=-2truecm
+\textwidth=16.5truecm 
+\textheight=23truecm
+\renewcommand{\Bbb}{\mathbb}
+\newcommand{\C}{{\Bbb C}}
+\newcommand{\R}{{\Bbb R}}
+\newcommand{\D}{{\Bbb D}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\F}{{\cal F}}
+\renewcommand{\L}{{\cal L}}
+\newcommand{\scalar}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|_{\varphi}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\adjoint}{\bar {\partial}^*_{\varphi}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Li}{\operatorname{Li}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\stod}{\operatorname{supp}}
+\newcommand{\nin}{\mbox{$\;\not\in\;$}}
+\newcommand{\dive}{\mbox{${\rm\bf div\,}$}}
+\newcommand{\curl}{\mbox{${\rm\bf curl\,}$}}
+\newcommand{\grad}{\mbox{${\rm\bf grad\,}$}}
+\newcommand{\spann}{\mbox{${\rm Span}$}}
+\newcommand{\tr}{\mbox{${\rm tr}$}}
+\newcommand{\rank}{\mbox{${\rm rank}$}}
+\newcommand{\image}{\mbox{${\rm image}$}}
+\newcommand{\nullity}{\mbox{${\rm null}$}}
+\newcommand{\proj}{\mbox{${\rm proj}$}}
+\newcommand{\id}{\mbox{${\rm id}$}}
+\newcommand{\Av}{\mbox{${\bf A}$}}
+\newcommand{\av}{\mbox{${\bf a}$}}
+\newcommand{\uv}{\mbox{${\bf u}$}}
+\newcommand{\vv}{\mbox{${\bf v}$}}
+\newcommand{\wv}{\mbox{${\bf w}$}}
+\newcommand{\xv}{\mbox{${\bf x}$}}
+\newcommand{\zv}{\mbox{${\bf z}$}}
+\newcommand{\yv}{\mbox{${\bf y}$}}
+\newcommand{\bv}{\mbox{${\bf b}$}}
+\newcommand{\cv}{\mbox{${\bf c}$}}
+\newcommand{\dv}{\mbox{${\bf d}$}}
+\newcommand{\ev}{\mbox{${\bf e}$}}
+\newcommand{\fv}{\mbox{${\bf f}$}}
+\newcommand{\gv}{\mbox{${\bf g}$}}
+\newcommand{\hv}{\mbox{${\bf h}$}}
+\newcommand{\iv}{\mbox{${\bf i}$}}
+\newcommand{\jv}{\mbox{${\bf j}$}}
+\newcommand{\kv}{\mbox{${\bf k}$}}
+\newcommand{\pv}{\mbox{${\bf p}$}}
+\newcommand{\nv}{\mbox{${\bf n}$}}
+\newcommand{\qv}{\mbox{${\bf q}$}}
+\newcommand{\rv}{\mbox{${\bf r}$}}
+\newcommand{\sv}{\mbox{${\bf s}$}}
+\newcommand{\tv}{\mbox{${\bf t}$}}
+\newcommand{\ov}{\mbox{${\bf 0}$}}
+\newcommand{\Fv}{\mbox{${\bf F}$}}
+\newcommand{\Gv}{\mbox{${\bf G}$}}
+\newcommand{\Nv}{\mbox{${\bf N}$}}
+\newcommand{\Hv}{\mbox{${\bf H}$}}
+\newcommand{\Ev}{\mbox{${\bf E}$}}
+\newcommand{\Sv}{\mbox{${\bf S}$}}
+\newcommand{\Tv}{\mbox{${\bf T}$}}
+\newcommand{\Vv}{\mbox{${\bf V}$}}
+\newcommand{\Bv}{\mbox{${\bf B}$}}
+\newcommand{\Oa}{\mbox{$(0,0)$}}
+\newcommand{\Ob}{\mbox{$(0,0,0)$}}
+\newcommand{\Onv}{\mbox{$[0,0,\ldots,0]$}}
+\newcommand{\an}{\mbox{$(a_1,a_2, \ldots,a_n)$}}
+\newcommand{\xn}{\mbox{$(x_1,x_2, \ldots,x_n)$}}
+\newcommand{\xnv}{\mbox{$[x_1,x_2, \ldots,x_n]$}}
+\newcommand{\vnv}{\mbox{$[v_1,v_2, \ldots,v_n]$}}
+\newcommand{\wnv}{\mbox{$[w_1,w_2, \ldots,w_n]$}}
+\newcommand{\tvint}{\int\!\!\!\int}
+\newcommand{\thrint}{\int\!\!\!\int\!\!\!\int}
+
+%
+\parindent 0pt
+\thispagestyle{empty}
+\begin{document}
+\lstset{language=matlab}
+%\lstset{inputencoding=latin1}  %Þetta er notað almennt. 
+\lstset{inputencoding=utf8/latin1}
+{\large\bf Háskóli Íslands}  \hfill {\large \bf Verkfræði- og
+náttúruvísindasvið}
+
+\bigskip
+\begin{center}
+{\Large\bf  Töluleg greining (STÆ405G) }
+\end{center}
+
+\begin{center}{\Large \bf  Heimaverkefni III \\ \medskip
+Hreyfikerfi og hreyfimyndir
+}
+\end{center}
+
+\begin{center}{\bf 22.3.2013}
+\end{center}
+
+\noindent
+Tilgangur þessa verkefnis er að beita tölulegum aðferðum til þess að
+leysa upphafsgildisverkefni og setja lausnir þeirra fram með hreyfimyndum.
+Við tökum fyrir tvö stærðfræðileg líkön úr aflfræði (e.~dynamics) og 
+síðan megið þið velja ykkur líkan eftir eigin höfði úr hvaða
+hagnýtingu sem er, þó ekki einfaldan eða tvöfaldan pendúl, því þeir 
+hafa mikið komið við sögu í þessu námskeiði á  undanförnum árum.  
+Ef þið viljið taka fyrir pendúla, þá þurfa þeir að vera að minnsta
+kosti þrefaldir.
+
+
+\smallskip
+Sígild aflfræði er geysilega ríkulegt og heillandi viðfangsefni.
+Til eru  ógrynni af stærðfræðilegum líkönum úr raunvísindum og verkfræði þar
+sem hægt er leysa með tölulegum aðferðum og setja fram með
+hreyfimyndum.  Á Wikipedia er hægt að finna 
+mjög fínar greinar um þessi efni og raunar um stærðfræði almennt.  
+Ég hvet ykkur 
+eindregið til þess að fletta upp ensku heitunum sem ég nefni í þessum 
+texta á Wikipedia og lesa ykkur til um viðfangsefnin og leita að 
+hugmyndum til fyrirmyndar að ykkar eigin verkefni.  Nemendur í
+sveiflufræði geta til dæmis haft samráð við kennara sína.
+
+
+\smallskip
+Eftir að yfirferð á verkefninu er lokið þá munum við hafa sýningu á
+vel völdum hreyfimyndum í fyrirlestri og veita verðlaun
+sem bera yfirskriftina:
+
+\smallskip
+
+\begin{center}
+ {\Large \it {\tt Matlab}-Eddan
+fyrir bestu hreyfimyndina í tölulegri greiningu árið 2013}.   
+\end{center}
+
+\smallskip
+Dómnefnd {\tt Matlab}-Eddunnar árið 2013 skipa þeir 
+Guðmundur Einarsson, Jóhann Sigursteinn Björnsson og 
+Máni Maríus Viðarsson.
+Dómnefndin velur 10-20 myndir í úrslit en nemendur námskeiðsins 
+kjósa bestu myndina.  Meir um þetta þegar nær dregur.
+
+
+
+
+\section{Forsagnar-og-leiðréttingaraðferð} 
+
+
+Nákvæmustu aðferðirnar sem sem fjallað er um í kennslubókinni okkar eru
+\begin{itemize}
+\item Fjórða-og-fimmta-stigs Runge-Kutta-Fehlberg-aðferð með
+  breytilegri skrefstærð.
+\item Fimmta-og-sjötta-stigs Runge-Kutta-Verner-aðferð með
+  breytilegri skrefstærð.
+\item Fjögurra-og-þriggja-skrefa Adams-forsagnar-og-leiðréttingaraðferð
+\item Fjögurra-og-þriggja-skrefa Adams-forsagnar-og-leiðréttingaraðferð með
+  breytilegri skrefstærð.
+\end{itemize}
+
+Á heimasíðu
+höfundar kennslubókarinnar:
+{\tt http://www.pcs.cnu.edu/$\sim$bbradie/mivps.html}  
+finnið þið forritin  {\tt rk45, rkv56, adams{\_}pc4} og {\tt vs{\_}pc4.m}.
+Afritið þau yfir á vélina ykkar.  Lesið vandlega grein 7.7 
+á bls.~608-621 í kennslubók og glöggvið ykkur á uppbyggingu 
+þessara forrita.
+
+\vfill\eject
+Þið eigið að forrita forsagnar-og-leiðréttingaraðferð þar 
+sem forsagnarskrefið er tekið með fimm skrefa Adams-Bashforth-aðferð:
+$$
+\tilde w_j=w_{j-1}+h\big(
+\tfrac{1901}{720} f(t_{j-1},w_{j-1})
+-\tfrac{1387}{360} f(t_{j-2},w_{j-2})
++\tfrac{109}{30} f(t_{j-3},w_{j-3})
+-\tfrac{637}{360} f(t_{j-4},w_{j-4})
++\tfrac{251}{720} f(t_{j-5},w_{j-5})
+\big)
+$$
+og  leiðréttingarskrefið er tekið með 
+fjögurra-skrefa Adams-Moulton-aðferð
+$$
+w_j=w_{j-1}+h\big(
+\tfrac{251}{720} f(t_{j},\tilde w_{j})
++\tfrac{646}{720} f(t_{j-1},w_{j-1})
+-\tfrac{264}{720} f(t_{j-2},w_{j-2})
++\tfrac{106}{720} f(t_{j-3},w_{j-3})
+-\tfrac{19}{720} f(t_{j-4},w_{j-4})
+\big).
+$$
+Báðar þessar aðferðir hafa 5.~stigs staðarskekkju.
+Til þess að koma aðferðinni af stað þurfum við því að nota
+5.~stigs Runge-Kutta-Fehlberg aðferð.  Þessari aðferð er lýst
+með næst síðustu formúlunni á bls.~611 í kennslubókinni og 
+$k_1,\dots,k_6$ eru reiknaðir skv.~formúlum á bls.~612.
+
+\begin{enumerate}
+\item [(i)]  Forritið á að heita {\tt adams{\_}pc5} og við mælum með því að 
+það sé uppbyggt eins og  {\tt adams{\_}pc4} á heimasíðu
+kennslubókarinnar {\tt http://www.pcs.cnu.edu/~bbradie/mivps.html} og
+skilgreiningin á því á að vera:
+{\tt 
+function [wi, ti] = adams{\_}pc5 ( RHS, t0, x0, tf, N )
+}
+
+\item [(ii)]  Skrifið lýsingu á nálgunaraðferðinni fyrir framan
+forritið í skýrslunni.  Lýsinguna 
+á forritinu í {\tt m}-skránni megið þið hafa á ensku, eins
+og í {\tt adams{\_}pc4}, en munið að aðlaga textann nýja forritinu.
+\item [(iii)] Prófið forritið með því að finna nálgunarlausn á
+$x'(t)=-3tx(t)^2+1/(1+t^3)$ með  $x(0)=0$, sem hefur réttu lausnina
+$x(t)=t/(1+t^3)$.  (Sjá upphafið að grein 7.7 í kennslubók.) 
+\item [(iv)] Teiknið fjórar myndir í skýrslunni tvær sem 
+sýna upp réttu lausnina og nálgunarlausn fyrir sitt hvort gildið
+á $h$, þannig að mismunur sjáist og tvær myndir með tilsvarandi
+skekkju.  (Sjá myndir í grein 7.7) 
+\item[(iv)] Finnið út hvað gildið á $h$ þarf að velja lítið 
+til þess að  heildarskekkjan á bilinu $[0,5]$ sé minni en $10^{-4}$.
+\item[(v)] Notið {\tt Matlab}-skipanirnar {\tt tic} og {\tt toc}
+til þess að mæla hraðvirkni forritsins í samanburði við 
+{\tt rk45} og {\tt rkv56}.  Gerið þetta með því að taka fína skiptingu
+á bilinu $[0,5]$ og mæla hversu langan tíma það tekur fyrir hvert
+forrit að ljúka verkefninu.  Gerið grein fyrir því hversu mörg
+fallgildi $\fv(t,\wv)$ forritin þurfa að reikna út í hverju tilfelli.
+Hvaða forrit er best?  
+\end{enumerate}
+
+
+\section{Einfaldur pendúll}
+
+
+{\it Einfaldur pendúll} (e.~simple pendulum) í plani 
+er heillandi fyrirbæri svo ekki sé sagt dáleiðandi. 
+Hreyfijafnan fyrir útslagshorn pendúls er 
+annars stigs ólínuleg jafna $\theta''+(g/\ell)\sin \theta=0$
+þar sem  $g$ táknar þyngdarhröðunina og $\ell$ táknar
+lengd pendúlsins.    Við köllum þetta einfaldan pendúl.
+
+\smallskip
+Ef útslagshornið er lítið þá er $\sin \theta\approx \theta$ 
+og menn taka nálgun sem lausn línulegu afleiðujöfnunnar 
+$\theta''+(g/\ell)\theta=0$ almenn lausn hennar er
+af gerðinni $\theta(t)=A\cos(\omega\, t) + B\sin(\omega\, t)$
+þar sem $\omega=\sqrt{g/\ell}$.  Þessi lausn er kölluð {\it harmónískur
+  pendúll}.  Ef við setjum upphafsskilyrðin
+$\theta(t_0)=\theta_0$ og 
+$\theta'(t_0)=\theta_1$, þá fáum við lausnina
+$$
+\theta(t)=\theta_0\cos(\omega(t-t_0)) + \dfrac{\theta_1}\omega 
+\sin(\omega(t-t_0)).
+$$
+
+Í möppunni {\it Forrit} á heimasíðu námskeiðsins á Uglunni finnið
+þið skrána {\tt pendull.m}.  Í henni er sýnt hvernig hreyfimynd er
+búin til fyrir harmóníska pendúlinn. Úttakið er 
+skráin {\tt pendull.avi}.  Hana má síða spila í myndbandsforriti.
+
+
+\smallskip
+Fyrsta verk okkar er að hlaða niður þessu forriti og fá það til þess
+að virka í {\tt Matlab}.  Gerið nokkrar tilraunir með forritið með því
+að  breyta upphafsskilyrðunum.  
+
+
+\smallskip
+Takið eftir því að myndin er tvískipt.  Neðri parturinn sýnir sveiflu
+pendúlsins, en efri parturinn er {\it fasarit} (e.~phase plot) 
+jöfnunnar.  Það er almennt skilgreint fyrir lausn
+$\xv(t)=[x_1(t),x_2(t)]^T$ á fyrsta 
+stigs tvívíðu jöfnuhneppi  $\xv'(t)=\fv(t,\xv(t))$ sem braut 
+lausnarinnar, þ.e.a.s.~ferillinn $t\mapsto (x_1(t),x_2(t))$ í 
+$x_1x_2$-planinu.  Athugið að við teiknum fyrst allan ferilinn og
+sýnum síðan á hreyfimyndinni hver staða pendúlsins er miðað við
+fasaritið með $x_1(t)=\theta(t)$ og $x_2(t)=\theta'(t)$. 
+
+
+
+
+\begin{enumerate}
+\item [(i)]  Skrifið  upp fyrsta stigs hneppi 
+sem er jafngilt jöfnu  $\theta''(t)+(g/\ell)\sin\theta(t)$
+fyrir einfaldan pendúl.
+\item [(ii)]  
+Notið forritið {\tt adams{\_}pc5} sem þið gerðuð í síðasta lið
+til þess að reikna út nálgun á hneppinu.
+\item [(iii)]
+Takið hreyfimyndina sem gefin er og búið nýja hreyfimynd 
+þar sem harmóníski og einfaldi (ólínulegi) pendúlinn og 
+tilsvarandi fasarit eru sýnd í ólíkum litum, en ferlarnir 
+tveir eiga að vera  reiknaðir út með 
+sömu upphafsskilyrðum.  Setjið fasaritin í tvær myndir
+ofan fyrir ofan pendúlana.  Athugið að  þið getið þurft 
+hafa  skrefstærðina í útreikningunum mjög litla til þess 
+að fá góða nálgun, en þið þurfið um það bil 25 tímapunkta 
+í einni lotu pendúlsins til þess að fá eðlilega hreyfimynd.  
+Til viðmiðunar er lota harmóníska pendúlsins $T=2\pi\sqrt{\ell/g}$.
+\item [(v)]  
+Veljið nokkur gildi á upphafshorninu og metið fyrir
+hvaða gildi á $\theta_0$ línulega nálgunin er góð í þrjár lotur og
+hvenær lausnirnr fara að greinast í sundur.
+ \item [(vi)]  Stækkið útslagið og búið til eina hreyfimynd þar sem
+útslagið er stórt og mikið skilur á milli lausnanna tveggja.
+Nefnið hreyfimyndina {\tt hr2.avi}  og
+skilið henni með keyrsluskrá {\tt hr2.m} á Uglu.
+\end{enumerate}
+
+
+
+\section{Róla --  örvun með lotubundnum breytum}
+
+Nú ætlum við að skoða fyrirbæri sem 
+nefnt er á ensku  {\it parametric excitation}, {\it parametric
+  resonance} og  {\it parametric pumping} og ég veit varla hvað heitir
+á íslensku.  Köllum þetta {\it örvun með lotubundnum breytum}.  
+Við þekkjum þetta fyrirbæri öll frá því að við vorum lítil og lékum okkur í
+rólu. Þá komum við okkur fyrst á ferð og sveifluðum síðan fótunum
+fram og aftur í takti eða úr takti við sveiflu rólunnar til þess að 
+herða eða hægja á sveiflu rólunnar. 
+
+\smallskip
+Pendúll er punktmassi $m$ sem hangir í massalausri stöng.   Ef við
+horfum á okkur sjálf í rólunni sem pendúl, þá hækkum við  og
+lækkum  massamiðju okkar á víxl þegar við sveiflum fótunum.  
+Það er eins og að hafa lengd pendúlsins tímaháða
+$\ell=s(t)$
+
+\smallskip
+Við köllum þetta örvaðan pendúl.  Jafna hans er
+$$
+\theta''+\dfrac g{s(t)}\theta=0
+$$
+og við gerum tilraunir með að föll af gerðinni
+$$
+s(t)=\ell+a\cos(\omega t+\varphi)
+$$
+þar sem þið eigið að velja útslagið $a$, horntíðnina 
+$\omega$ og fasahliðrunina $\varphi$.  
+
+\smallskip
+Munið að horntíðni hreintóna pendúlsins er $\sqrt{g/\ell}$ og 
+lota hans  $T=2\pi\sqrt{\ell/g}$.   
+Lota einfalda (ólínulega) pendúlsins er gefin með formúlu
+$$
+T=2\pi \sqrt{\dfrac \ell g}\bigg(
+1+\dfrac 1{16} \theta_0^2+\dfrac{11}{3072} \theta_0^4+\cdots\bigg)
+$$
+þar sem $\theta_0$ er hámarksútslag hans.  Þessar staðreyndir
+geta hjálpað ykkur við að velja horntíðnina $\omega$ og fasahliðrunina
+$\varphi$ í þessum hluta verkefnisins. 
+
+
+\begin{enumerate}
+\item[(i)]  Fyrsta stigs hneppi sem er jafngild 
+hreyfijöfnu örvaða pendúlsins.
+\item[(ii)] 
+Notið sömu aðferð og í síðasta lið til þess að
+leysa afleiðujöfnuna og  
+setjið lausnina fram með hreyfimynd eins og 
+í síðasta lið með einfalda pendúlnum og örvaða pendúlnum í ólíkum
+litum í sömu hreyfimynd. Skilið hreyfimyndinni {\tt hr3.avi} með
+skýrslunni og keyrsluskránni {\tt hr3.m} sem býr hana til.
+\item[(iii)] Fyrir hvaða gildi á  $\omega$ og $\varphi$ 
+örvast útslag pendúlsins mest?
+\item[(iv)] Hvaða gildi á $\varphi$ notar maður til þess að hægja á
+  rólunni?
+\item[(v)] Túlkið eðlisfræðilega hvernig þetta gengur fyrir sig.
+\end{enumerate}
+
+
+
+\section{Kúlupendúll}
+
+Byrjið á því að fletta upp orðinu {\it pendulum} á Wikipedia
+og renna ykkur niður síðuna þar til þið sjáið kúlupendúl sveiflast 
+undir með mynd af Foucault í bakgrunni.  Við ætlum að reikna 
+út nálganir á hreyfijöfnum  kúlupendúls og teikna upp lausnina
+á mynd eins of þessari.  Takið eftir ferlinum sem
+ritaður er í botninn. Við æltum líka að teikna hann.  
+
+\smallskip
+Kúlupendúll sem sveiflast í þyngdarsviði hefur hreyfiorkuna
+$$
+T=\tfrac 12 m\ell^2\dot\theta^2+\tfrac 12 m\ell^2(\sin^2\theta)
+ \dot \phi^2
+$$
+þar sem $m$ er massi pendúlsins, $\ell$ er lengd hans, $\theta=\theta(t)$ er
+hornið sem hann myndar við lóðlínu sem fall af tíma $t$. $\dot\theta$ er 
+tímaafleiða $\theta$, fallið $\phi$ er hornið sem pendúllinn myndar við
+$xz$-planið sem fall af tíma og $\dot\phi$ er afleiða
+$\phi$ með tilliti til tíma.
+
+\smallskip
+Stöðuorka pendúlsins í þyngdarsviði er 
+$$
+U=-mg\ell\cos \theta
+$$
+og er hún því sett $0$ þegar pendúllinn stendur hornrétt á lóðrétta
+ásinn. 
+
+\smallskip
+Lagrange-fallið er $L=T-U$ og skriðþungarnir sem svara til 
+breytanna $\theta$ og $\phi$ eru
+\begin{equation*}
+p_\theta=\dfrac{\partial L}{\partial\dot\theta}=m\ell^2\dot\theta,
+\qquad \text{ og } \qquad 
+p_\phi=\dfrac{\partial L}{\partial\dot\phi}
+=m\ell^2(\sin^2 \theta) \, \dot\phi
+\end{equation*}
+Heildarorkan er
+$$
+H=T+U=\dfrac{p_\theta^2}{2m\ell^2}+
+\dfrac{p_\phi^2}{2m\ell^2\sin^2\theta}-m\ell g\cos \theta.
+$$
+Samkvæmt Hamilton-aflfræði (e.~hamiltonian mechanics) 
+eru hreyfijöfnurnar fjórar:
+\begin{align*}
+  \dot\theta&=\dfrac{\partial H}{\partial p_\theta}=\dfrac{p_\theta}{m\ell^2},\\
+  \dot\phi&=\dfrac{\partial H}{\partial
+    p_\phi}=\dfrac{p_\phi}{m\ell^2\sin^2\theta},\\ 
+\dot p_\theta&=-\dfrac{\partial H}{\partial \theta}
+=\dfrac{p_\phi^2\cos\theta}{m\ell^2\sin^3\theta}-mg\ell\sin \theta,\\
+\dot p_\phi&=-\dfrac{\partial H}{\partial \phi}=0.
+\end{align*}
+Það er þægilegast að  innleiða breyturnar
+$x_1=\theta$, $x_2=\phi$, $x_3=p_\theta$ og $x_4=p_\phi$.
+                                                                                                                                                                              
+\smallskip
+\begin{enumerate}
+\item [(i)]  Skrifið upp fyrsta stigs hneppið sem er jafngilt
+hreyfijöfnum kúlupendúlsins.
+\item [(ii)] Notið nú forritið ykkar til þess að leysa jöfnuna og búið
+til hreyfimynd.  Þið þurfið að breyta teikniforritinu og teikna
+þrívíddarmynd með {\tt Matlab}-skipuninni {\tt plot3} til þess að 
+teikna í þremur víddum.  Ímyndið ykkur að það renni blek frá penúlnum
+niður á gólfið og að hann riti feril.   Í myndinni eigið þið 
+að teikna ferilinn sem þannig myndast í gólfið fyrir neðan pendúlinn 
+eða í aðra mynd líkt og fasamyndirnar í fyrri liðum.
+\item [(iii)]  Skilið inn hreyfimynd  í {\tt hr4.avi}
+og tilheyrandi keyrsluskrá {\tt hr4.m}, ásamt annarri grafík. 
+\end{enumerate}
+
+\section{ Hreyfikerfi að eigin vali}
+
+Notið eins  aðferðir og í síðustu tveimur greinum til þess að
+leysa afleiðujöfnuhneppi sem lýsir einhverju kerfi að eigin vali.
+Notið þá grafísku framsetningu á lausninni sem ykkur finnst best eiga
+við. 
+\begin{enumerate}
+\item [(i)] Notið eigið forrit til útreikninganna, en ef ykkur þykir
+það ganga treglega eða ekki gefa nógu nákvæmar lausnir á skikkanlegum
+tíma þá skuluð þið nota Runge-Kutta-Verner-aðferðina í forritinu
+{\tt rkv56}.  Hún er nákvæmasta aðferðin sem eigum völ á.
+\item [(ii)]  Skilið inn hreyfimynd/grafík  í skránni {\tt hr5.avi}
+tilheyrandi keyrsluskrá {\tt hr5.m}. 
+\end{enumerate}
+
+
+
+
+
+
+
+\section*{Atriði um frágang og framsetningu:}  Lesið vandlega
+forsíðu Heimaverkefnis I.  
+Við yfirferð á verkefnunum þá verður eftirfarandi listi hafður til hliðsjónar
+og er dregið niður fyrir þau atriði á honum sem er ábótavant.
+
+\begin{itemize}
+ \item Þjappið {\tt .avi} skrám og ekki gleyma að skila inn 
+hreyfimyndaskrám og viðeigandi keyrsluskrám með nöfnum
+sem nefnd eru í skýrslunni.
+ \item Nöfn á forsíðu efst til hægri og undirskriftir á síðustu síðu.
+ \item Forritakeyrslur eru í skýrslunni.
+ \item Kaflaheiti og kaflanúmer eru eins og í fyrirmælunum
+ \item Forritunarkóði og forritakeyrslur auðgreindar, og í leturgerð
+sem hentar (t.d.~\verb=verbatim= og M-code LaTeX Package: mcode.sty,
+(er að finna í Matlab-möppunni á Uglu)).
+ \item Útskýringar í haus forrita, \verb=>>help= \emph{forrit} á að gefa
+lýsingu á forritinu.
+ \item Inntök og úttök forrita eru þau sömu og í fyrirmælunum, og í sömu röð.
+ \item Skráarheiti og fallaheiti eins og í fyrirmælunum.
+ \item Kóði inndreginn (Ctrl+A, Ctrl+I).
+ \item Kóði útskýrður
+\end{itemize}
+
+
+
+\smallskip
+\textbf{\large Um skil:}  Úrlausn á að skila ekki síðar en 
+ kl.~16.00 föstudaginn 12.~apríl 2013.
+
+
+\bigskip
+Gangi ykkur vel! \\
+Ragnar. 
+
+\end{document}
+
