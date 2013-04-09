@@ -1,0 +1,1 @@
+adams_pc5('adams_pc5testfunc', 0, 0, 5, 100)
