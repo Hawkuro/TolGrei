@@ -54,7 +54,7 @@ Fáum út úr þessu nálgunina $8,868525$, með skekkjumat $7,7375 \times 10^{-
 \subsection{}
 
 Höfum nú 
-\[R(i,0)=T(h_i)=\sum_{k=0}^{2^i-1}h(\frac{1}{2}f(x_k) + \frac{1}{2}f(x_{i+k})),\quad i=0,1,2\, , \quad h=\frac{(0.4)}{2^i},\quad x_k =  -0.2 + kh\]
+\[R(i,0)=T(h_i)=\sum_{k=0}^{2^i-1}h(\frac{1}{2}f(x_k) + \frac{1}{2}f(x_{1+k})),\quad i=0,1,2\, , \quad h=\frac{(0.4)}{2^i},\quad x_k =  -0.2 + kh\]
 
 \[
 R(i,j)=R(i,j-1) + \frac{1}{4^j-1}(R(i,j-1)-R(i-1,j-1))
@@ -75,7 +75,7 @@ $h$&$R(i,0)$&$R(i,1)$&$R(i,2)$\\ \hline
 
 \section{6. maí 2011}
 \subsection{}
-til að fá skekkju minni en 0.01 höfum við $$h^4=\frac{180*0.01}{\alpha},\ \alpha = \max_{ x \in [1,2]}f(x) $$
+Til að fá skekkju minni en 0.01 höfum við $$h^4=\frac{180*0.01}{\alpha},\ \alpha = \max_{ x \in [1,2]}f(x) $$
 hlutbillengdin þarf þá að vera minni en $$\sqrt[4]{\frac{1.8\cdot 2}{\pi^3}}\approx 0.58$$
 og þá er 0.5 gott val því það er stærsta talan lægri en 0.58 sem gengur upp í 1 
 \subsection{}
@@ -92,7 +92,7 @@ $h$&$R(i,0)$&$R(i,1)$&$R(i,2)$\\ \hline
 1	&-1\\
 0.5	&-1.03033&-1.04044\\
 0.25	&-1.03895&-1.04182&-1.041870666\\
-\end{tabular}
+\end{tabular}\\
 Þannig að við fáum nálgunina -1.041870666 með skekkjuna $5.1*10^-5$ en rétt gildi er -1.0419 sem fellur innan skekkjumarka
 
 \end{document}
