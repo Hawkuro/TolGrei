@@ -1,20 +1,20 @@
 function [wi, ti] = adams_pc5 ( RHS, t0, x0, tf, N )
 
-%ADAMS_PC4  approximate the solution of the initial value problem
+%ADAMS_PC5  approximate the solution of the initial value problem
 %
 %                       x'(t) = RHS( t, x ),    x(t0) = x0
 %
-%           using the Adams fourth-order predictor / corrector scheme
+%           using the Adams fifth-order predictor / corrector scheme
 %           - this routine will work for a system of first-order 
 %           equations as well as for a single equation
 %
-%           the classical fourth-order Runge-Kutta method is used to 
+%           the classical fifth-order Runge-Kutta method is used to 
 %           initialize the predictor / corrector scheme
 %
 %
 %     calling sequences:
-%             [wi, ti] = adams_pc4 ( RHS, t0, x0, tf, N )
-%             adams_pc4 ( RHS, t0, x0, tf, N )
+%             [wi, ti] = adams_pc5 ( RHS, t0, x0, tf, N )
+%             adams_pc5 ( RHS, t0, x0, tf, N )
 %
 %     inputs:
 %             RHS     string containing name of m-file defining the 
