@@ -1,4 +1,4 @@
-function [wi, ti] = adams_pc4 ( RHS, t0, x0, tf, N )
+function [wi, ti] = adams_pc5 ( RHS, t0, x0, tf, N )
 
 %ADAMS_PC4  approximate the solution of the initial value problem
 %
@@ -51,30 +51,33 @@ oldf = zeros(3,neqn);
 %  remember to save function values
 %
 
-for i = 1:3
+for i = 1:4
     oldf(i,1:neqn) = feval ( RHS, t0, x0 );
     k1 = h * oldf(i,:);
-	k2 = h * feval ( RHS, t0 + h/2, x0 + k1/2 );
-	k3 = h * feval ( RHS, t0 + h/2, x0 + k2/2 );
-	k4 = h * feval ( RHS, t0 + h, x0 + k3 );
-    x0 = x0 + ( k1 + 2*k2 + 2*k3 + k4 ) / 6;
+	k2 = h * feval ( RHS, t0 + h/4, x0 + k1/4 );
+	k3 = h * feval ( RHS, t0 + 3*h/8, x0 + k1*3/32 + k2*9/32 );
+	k4 = h * feval ( RHS, t0 + 12/13*h, x0 + 1932/2197*k1 + 7200/2197*k2 + 7296/2197*k3 );
+    k5 = h * feval ( RHS, t0 + h, x0 + 439/216*k1 - 8*k2 + 3680/513*k3 + 845/4104*k4);
+    k6 = h * feval ( RHS, t0 + h/2, x0 - 8/27*k1 + 2*k2 - 3544/2565*k3 + 1859/4104*k4 - 11/40*k5);
+    x0 = x0 + 16/135*k1 + 6656/12825*k3 + 28561/56430*k4 - 9/50*k5 + 2/55*k6;
 	t0 = t0 + h;
 
     wi(1:neqn,i+1) = x0';	
 end;
 
 %
-%  continue time stepping with 4th order Adams Predictor / Corrector
+%  continue time stepping with 5th order Adams Predictor / Corrector
 %
 
 for i = 4:N
     fnew = feval ( RHS, t0, x0 );
-    xtilde = x0 + (h/24) * ( 55*fnew - 59*oldf(3,:) + 37*oldf(2,:) - 9*oldf(1,:) );
+    xtilde = x0 + h*( 1901/720*fnew - 1387/360*oldf(4,:) + 109/30*oldf(3,:) - 637/360*oldf(2,:) + 251/720*oldf(1,:));
 	fnew1 = feval ( RHS, t0+h, xtilde );
-	x0 = x0 + (h/24) * ( 9*fnew1 + 19*fnew - 5*oldf(3,:) + oldf(2,:) );
+    x0 = x0 + h/720*(251*fnew1 + 646*fnew - 264*oldf(4,:) + 106*oldf(3,:) - 19*oldf(2,:));
 	oldf(1,1:neqn) = oldf(2,1:neqn);
 	oldf(2,1:neqn) = oldf(3,1:neqn);
-	oldf(3,1:neqn) = fnew;
+	oldf(3,1:neqn) = oldf(4,1:neqn);
+    oldf(4,1:neqn) = fnew;
 	t0 = t0 + h;
 
     wi(1:neqn,i+1) = x0';	
