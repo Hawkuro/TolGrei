@@ -1,19 +1,20 @@
-
 function y = pendull(lotur,n,theta0,theta1,omega,t0,res)
 %% pendull.m
-% Skipanaskra sem byr til hreyfimynd af einfoldum penduli
+% Skipanaskra sem byr til hreyfimynd af einfoldum penduli, tekur
+% inn hve margar lotur, hve margar myndir per lotu, upphafsgildin
+% theta0,theta1, omega og t0, og hve margrfaltfleiri itranir af
+% nalgun eru en rommum.
 aviobj = avifile('pendull.avi','compression','None','fps',16); %#ok<REMFF1>
-% Segir til um nafn myndbandsins, þjoppun og fjolda ramma a sek.
+% Segir til um nafn myndbandsins, thjoppun og fjolda ramma a sek.
 % Windows notendur aettu ad breyta 'None' i 'Indeo5' eda i einhvern annan
 % compression moguleika.
 % Mac, Linux, BSD og onnur styrikerfi thurfa ad thjappa myndbandid
 % handvirkt utan matlab, t.d med ffmpeg.
 fig=figure;
 %% Fastar
-%lotur = 5;          %Fjoldi lota til að reikna
+%lotur = 5;          %Fjoldi lota til ad reikna
 %n = 25;             %Fjoldi mynda i hverri lotu               
-%theta0 = 2;      %theta(t0) % 0.42 gefur goda nalgun i 3
-                    %umferdir og svo fer thad ad greinast i sundur.
+%theta0 = 2;         %theta(t0)
 %theta1 = 0;         %theta'(t0)
 %omega = 1;          %Hornhradi
 %t0 = 0;
@@ -27,7 +28,7 @@ simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
 thetasimple = @(t)  simple(1, res*floor(t*n/(2*pi)) + 1);
 dthetasimple = @(t) simple(2, res*floor(t*n/(2*pi)) + 1);
 %%
-% Thar sem við hreinsum myndina i hverju skrefi ta thurfum vid ad geyma
+% Thar sem vid hreinsum myndina i hverju skrefi ta thurfum vid ad geyma
 % fasahnitin i fylki
 fasahnit = [theta(0);dtheta(0)];
 simplefasahnit =[thetasimple(0);dthetasimple(0)];
@@ -80,5 +81,5 @@ for t = 0:2*pi/n:2*pi*lotur
     aviobj = addframe(aviobj,F); % Og skeytir thvi vid restina
 end
 %% Fragangur
-close(fig); %Lokar myndinni til að ekki se haegt að yfirskrifa hana
+close(fig); %Lokar myndinni til ad ekki se haegt ad yfirskrifa hana
 aviobj = close(aviobj); %Lokar og byr til myndbandid

@@ -1,5 +1,5 @@
 function [wi, ti] = adams_pc5 ( RHS, t0, x0, tf, N )
-
+%%adams_pc5
 %ADAMS_PC5  approximate the solution of the initial value problem
 %
 %                       x'(t) = RHS( t, x ),    x(t0) = x0

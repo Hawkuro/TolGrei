@@ -1,4 +1,9 @@
 function [adms, err] = adams_pc5plot (N)
+%%adams_pc5plot
+%A function that approximates x'(t) = 
+%RHS = @(t,x) -3*t*x^2 + 1/(1+t^3)
+%And plots the real function in addition to the approximation, and
+%a graph of the error
     RHS = @(t,x) -3*t*x^2 + 1/(1+t^3)
     t = linspace(0,5,N+1);
     x = @(t) t/(1+t^3);

@@ -1,16 +1,18 @@
 \documentclass[a4]{article}
 
-\usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
+\usepackage[icelandic]{babel}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{sidecap}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=3cm]{geometry}
-\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,nohead]{geometry}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{../mcode}
 \usepackage{amsfonts}
 \usepackage{epstopdf}
 
-\title{Töluleg Greining\\ Heimaverkefni 1}
+\lstset{language=MATLAB}
+\title{Töluleg Greining\\ Heimaverkefni 3}
 \date{\today{}}
 \author{ 
   Bjarki Geir Benediktsson,\and
@@ -30,7 +32,7 @@
 
 \begin{center}
  \textsc{ \LARGE Töluleg Greining\\
-  Heimaverkefni 1\\
+  Heimaverkefni 3\\
   \today{}
   }
   \end{center}
@@ -41,6 +43,8 @@
 \subsection{}
 \lstinputlisting[inputencoding=utf8]{adams_pc5.m}
 \subsection{}
+\lstinputlisting[inputencoding=utf8]{adams_pc5plot.m}
+\lstinputlisting[inputencoding=utf8]{adams_pc5test.m}
 %hér á að bæta inn ferilteikningum af prófunarfallinu
 \subsection{}
 til þess að fá heildarskekkju minni en $10^{-4}$ þurfti $h=\frac{1}{50000}=2*10^{-5}$
@@ -59,7 +63,26 @@ rkv56		&0,0027\\\hline
 
 
 \section{Einfaldur pendúll}
+Við fáum að þar sem $$\theta''(t) + \frac{g/l} \cdot \sin{ \theta(t)} \Leftrightarrow \theta''(t) = -\frac{g}{l} \cdot \sin{\theta(t)}$$
+  þá má rita $$\left\{ \begin{array}{l} y(t) = \theta'(t) \\ y'(t) = \theta''(t) = - \frac{g}{l} \cdot \sin{\theta(t)} \end{array} \right.$$
+Notum þetta til að skilgreina eftirfarandi fall:
+\lstinputlisting[inputencoding=utf8]{pendulODE.m}
+\lstinputlisting[inputencoding=utf8]{pendulApprox.m}
 
+Við notuðum síðan þetta til að teikna hreyfimyndir, en það var gert með
+\lstinputlisting[inputencoding=utf8]{pendull.m}
+
+Með því að prófa nokkur gildi og horfa á útkomuna, þá komumst við að því að upphafhornið
+$\theta_0 = 0.42$ gaf okkur frekar góða nálgun að 3 umferð, en eftir það fóru lausnirnar að greinast í sundur.
+
+Til þess að svo gera hreyfimyndina þar sem útslagið er stórt var notaður eftirfarandi forritsbútur:
+\lstinputlisting[inputencoding=utf8]{hr2.m}
+
+\section{Róla}
+
+\section{Kúlupendúll}
+
+\section{Sólkerfi}
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
