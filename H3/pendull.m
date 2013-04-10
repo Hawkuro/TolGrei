@@ -10,8 +10,9 @@ fig=figure;
 %% Fastar
 lotur = 5;          %Fjoldi lota til að reikna
 n = 25;             %Fjoldi mynda i hverri lotu               
-theta0 = 0;         %theta(t0)
-theta1 = 1;         %theta'(t0)
+theta0 = 0.42;      %theta(t0) % 0.42 gefur goda nalgun i 3
+                    %umferdir og svo fer thad ad greinast i sundur.
+theta1 = 0;         %theta'(t0)
 omega = 1;          %Hornhradi
 t0 = 0;
 res = 6;
@@ -37,13 +38,18 @@ for t = 0:2*pi/n:2*pi*lotur
                                                    %fasaritinu
     hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
     plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
+    hold on 
+    plot(thetasimple(t),dthetasimple(t),'or', 'MarkerSize', 6)
     axis([-1.2,1.2,-1.2,1.2])
     axis square
     hold off 
     subplot(2,2,2) %Skipar matlab ad nota seinni hlutan af myndflotinum
     plot(simplefasahnit(1,:),simplefasahnit(2,:),'r') % Linan i fasaritinu
     hold on 
-    plot(thetasimple(t),dthetasimple(t),'or', 'MarkerSize', 6) %Punkturinn i fasaritinu
+    plot(thetasimple(t),dthetasimple(t),'or', 'MarkerSize', 6)
+    %Punkturinn i fasaritinu
+    hold on
+    plot(theta(t),dtheta(t),'ob', 'MarkerSize', 6) %Punkturinn i
     axis([-1.2,1.2,-1.2,1.2])
     axis square
     hold off 
