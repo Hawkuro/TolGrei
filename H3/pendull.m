@@ -10,8 +10,8 @@ fig=figure;
 %% Fastar
 lotur = 5;          %Fjoldi lota til að reikna
 n = 25;             %Fjoldi mynda i hverri lotu               
-theta0 = 0.3;         %theta(t0)
-theta1 = 0;         %theta'(t0)
+theta0 = 0;         %theta(t0)
+theta1 = 1;         %theta'(t0)
 omega = 1;          %Hornhradi
 t0 = 0;
 %% Jofnurnar
