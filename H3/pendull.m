@@ -29,36 +29,44 @@ dthetasimple = @(t) simple(2, res*floor(t*n/(2*pi)) + 1);
 fasahnit = [theta(0);dtheta(0)];
 simplefasahnit =[thetasimple(0);dthetasimple(0)];
 for t = 0:2*pi/n:2*pi*lotur
-    %% Pendullinn
-    subplot(2,1,1) %Skiptir myndaflotinum i 2x1 fylki og segir matlab ad nota fyrsta stakid
-    % Teikniskipun fyrir pendulinn: teiknum linu fra [0,0] (festipunktur) 
-    % i [sin(theta(t)),-cos(theta(t))] sem er stadsetning lodsins
-    % '-o' segir ad vid aetlum ad teikna linu med hringlaga endapunkta
-    % 'MarkerSize' setur staerd endapunktanna
-    % 'MarkerFaceColor' akvardar lit endapunktana
-    plot([0,sin(theta(t))],[0,-cos(theta(t))],'-o','MarkerSize',8, ...
-         'MarkerFaceColor','r') 
-    hold on
-    plot([0,sin(thetasimple(t))],[0,-cos(thetasimple(t))],'-o','MarkerSize',8,'MarkerFaceColor','b') 
-    axis([-1.2,1.2,-1.2,1.2]) %Festir asana
-    axis square %Thvingar matlab til ad hafa x og y asinn jafn
-                %langan
-    hold off
     %% Fasaritid
-    subplot(2,1,2) %Skipar matlab ad nota seinni hlutan af myndflotinum
+    subplot(2,2,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
     fasahnit = [fasahnit(1,:) theta(t); fasahnit(2,:) dtheta(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
     simplefasahnit = [simplefasahnit(1,:) thetasimple(t);simplefasahnit(2,:) dthetasimple(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
-    plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
-    hold on
-    plot(simplefasahnit(1,:),simplefasahnit(2,:),'r') % Linan i fasaritinu
-    hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
     plot(theta(t),dtheta(t),'ob', 'MarkerSize', 6) %Punkturinn i
                                                    %fasaritinu
+    hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
+    plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
+    axis([-1.2,1.2,-1.2,1.2])
+    axis square
+    hold off 
+    subplot(2,2,2) %Skipar matlab ad nota seinni hlutan af myndflotinum
+    plot(simplefasahnit(1,:),simplefasahnit(2,:),'r') % Linan i fasaritinu
     hold on 
     plot(thetasimple(t),dthetasimple(t),'or', 'MarkerSize', 6) %Punkturinn i fasaritinu
     axis([-1.2,1.2,-1.2,1.2])
     axis square
     hold off 
+    %% Pendullinn
+    %Skiptir myndaflotinum i 2x1 fylki og segir matlab ad nota fyrsta stakid
+    % Teikniskipun fyrir pendulinn: teiknum linu fra [0,0] (festipunktur) 
+    % i [sin(theta(t)),-cos(theta(t))] sem er stadsetning lodsins
+    % '-o' segir ad vid aetlum ad teikna linu med hringlaga endapunkta
+    % 'MarkerSize' setur staerd endapunktanna
+    % 'MarkerFaceColor' akvardar lit endapunktana
+    subplot(2,2,3)
+    plot([0,sin(theta(t))],[0,-cos(theta(t))],'-o','MarkerSize',8, ...
+         'MarkerFaceColor','b') 
+    axis([-1.2,1.2,-1.2,1.2]) %Festir asana
+    axis square %Thvingar matlab til ad hafa x og y asinn jafn
+                %langan
+    hold off
+    subplot(2,2,4)
+    plot([0,sin(thetasimple(t))],[0,-cos(thetasimple(t))],'-o','MarkerSize',8,'MarkerFaceColor','r') 
+    axis([-1.2,1.2,-1.2,1.2]) %Festir asana
+    axis square %Thvingar matlab til ad hafa x og y asinn jafn
+                %langan
+    hold off
     %% Hreyfimynd
     F = getframe(fig); %Naer i nyjasta ramman
     aviobj = addframe(aviobj,F); % Og skeytir thvi vid restina
