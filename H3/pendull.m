@@ -14,14 +14,15 @@ theta0 = 0;         %theta(t0)
 theta1 = 1;         %theta'(t0)
 omega = 1;          %Hornhradi
 t0 = 0;
+res = 6;
 %% Jofnurnar
 theta = @(t) theta0*cos(omega*(t-t0)) + (theta1/omega) * sin(omega*(t-t0));
 dtheta = @(t) -omega*theta0*sin(omega*(t-t0))+ theta1*cos(omega*(t- ...
                                                   t0));
 
-simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,lotur*n);
-thetasimple = @(t)  simple(1, floor(t*n/(2*pi)) + 1);
-dthetasimple = @(t) simple(2, floor(t*n/(2*pi)) + 1);
+simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
+thetasimple = @(t)  simple(1, res*floor(t*n/(2*pi)) + 1);
+dthetasimple = @(t) simple(2, res*floor(t*n/(2*pi)) + 1);
 %%
 % Thar sem við hreinsum myndina i hverju skrefi ta thurfum vid ad geyma
 % fasahnitin i fylki
@@ -47,9 +48,9 @@ for t = 0:2*pi/n:2*pi*lotur
     subplot(2,1,2) %Skipar matlab ad nota seinni hlutan af myndflotinum
     fasahnit = [fasahnit(1,:) theta(t); fasahnit(2,:) dtheta(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
     simplefasahnit = [simplefasahnit(1,:) thetasimple(t);simplefasahnit(2,:) dthetasimple(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
-    plot(fasahnit(1,:),fasahnit(2,:)) % Linan i fasaritinu
+    plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
     hold on
-    plot(simplefasahnit(1,:),simplefasahnit(2,:)) % Linan i fasaritinu
+    plot(simplefasahnit(1,:),simplefasahnit(2,:),'r') % Linan i fasaritinu
     hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
     plot(theta(t),dtheta(t),'ob', 'MarkerSize', 6) %Punkturinn i
                                                    %fasaritinu
@@ -65,5 +66,3 @@ end
 %% Fragangur
 close(fig); %Lokar myndinni til að ekki se haegt að yfirskrifa hana
 aviobj = close(aviobj); %Lokar og byr til myndbandid
-simplefasahnit
-fasahnit
