@@ -1,7 +1,7 @@
-function y = pendull(lotur,n,theta0,theta1,omega,t0,res)
+function y = pendull(RHS,lotur,n,theta0,theta1,omega,t0,res)
 %% pendull.m
 % Skipanaskra sem byr til hreyfimynd af einfoldum penduli, tekur
-% inn hve margar lotur, hve margar myndir per lotu, upphafsgildin
+% inn ODE pendulsins sem RHS, hve margar lotur, hve margar myndir per lotu, upphafsgildin
 % theta0,theta1, omega og t0, og hve margrfaltfleiri itranir af
 % nalgun eru en rommum.
 aviobj = avifile('pendull.avi','compression','None','fps',16); %#ok<REMFF1>
@@ -24,7 +24,8 @@ theta = @(t) theta0*cos(omega*(t-t0)) + (theta1/omega) * sin(omega*(t-t0));
 dtheta = @(t) -omega*theta0*sin(omega*(t-t0))+ theta1*cos(omega*(t- ...
                                                   t0));
 
-simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
+%simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
+simple = adams_pc5(RHS,t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
 thetasimple = @(t)  simple(1, res*floor(t*n/(2*pi)) + 1);
 dthetasimple = @(t) simple(2, res*floor(t*n/(2*pi)) + 1);
 %%
