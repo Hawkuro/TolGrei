@@ -125,7 +125,20 @@ einnig sést í forritinu fyrir jákvæða örvun að þegar útslagið er orði
  Það var gert með hjálp eftirfarandi falls, sem er pendúlsteiknifallið breytt til þess að ráða við þrívídd.
 \lstinputlisting[inputencoding=utf8]{pendull3d.m}
 
-\section{Lorenz}
+\section{Lorenz Attractor}
+Við ákváðum að gera myndaband af Lorentz Attractorum, en það eru lausnir á diffurjöfnum sem gefa ákaflega fallega ferla.
+Diffurjöfnuna má finna hér, en við henni var bættur möguleiki til að taka inn fasta sem notaðir eru, en það er til þess
+að auðvelda okkur að teikna margar eindir í einu.
+
+\lstinputlisting[inputencoding=utf8]{lorentzODE.m}
+
+Eftirfarandi forrit var svo búið til til þess að gera myndbandið, en það tekur sem viðföng fastana og upphafsstaðsetningar
+eindanna, svo auðvelt væri að bæta við fleirum.
+\lstinputlisting[inputencoding=utf8]{lorentzAnim.m}
+
+Eftirfarandi forritsbútur var svo gerður sem býr til myndbandið sem skilað var inn.
+\lstinputlisting[inputencoding=utf8]{hr5.m}
+
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
