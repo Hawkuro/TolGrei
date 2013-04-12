@@ -105,10 +105,17 @@ Til þess að svo gera hreyfimyndina þar sem útslagið er stórt var notaður 
   Til þess svo að teikna meðfylgjandi myndbönd var notast við eftirfarandi skrá og pendull.m úr fyrri lið.
   \lstinputlisting[inputencoding=utf8]{hr3.m}.
   
-  Útslagið örvaðist mest þegar $\omega = 1/T$ eins og gefið var í 3 og fasahornið var $\pi$,
-  en ef $\varphi = 0$, þá hægði maður á rólunni. Munurinn liggur í hvenær maður styttir og lengir bandið, en ef fasahornið er 0, þá er mesta lengingin í miðjunni og minnst í endapunktunum,
-  en öfugt er farið þegar hægt er á rólunni. Útskýringin á þessu er að maður er að nýta sér  hröðunina sem þyngdarkrafturinn veitir, en með því að vera að lengja á meðan maður dettur er maður í raun að detta meira beint niður.
-  %%LAGA! SENNILEGA EKKI RÉTT
+  Útslagið örvaðist mest þegar $\omega = 1/T$ eins og gefið var í 3
+ örvunin var jákvæð (sveiflan jókst) þegar  fasahornið var $\pi$ í byrjun en neikvæð ef fasahornið var  $\varphi = 0$, þá hægði maður á rólunni.
+ Munurinn liggur í hvenær maður styttir og lengir bandið, en ef fasahornið er $\pi$%er nokkuð viss um að þetta sé rétt svona
+, þá er mesta lengingin í miðjunni og minnst í endapunktunum,
+  en öfugt er farið þegar hægt er á rólunni. \\
+Orsökina fyrir þessari hegðun í okkar einfalda módeli er að finna í orkubúskap kerfisins en við gerum ráð fyrir að enginn orka fari í að hreyfa massamiðjuna upp og niður róluna\\
+þegar rólan er í hæstu stöðu þá er öll orka kerfisins stöðuorka og því ofar sem massamiðjan er þeim mun meiri er orka kerfisins og á svo lengi sem sveiflan er ekki meiri en $\frac{\pi}{2}$ frá lóðréttu þá færir það massamiðjuna ofar að stytta róluna\\
+eins þegar rólan er lárétt (í mijunni) þá er öll orka kerfisins skriðorka og því neðar sem massamiðjan er því meiri stöðuorka hefur verið losuð í skriðorku og augljóslega er massamiðjan neðar þegar lengt er í rólunni í þessari stöðu\\
+þegar fasahorninu er breytt þannig að rólan sé styðst í lóðréttu stöðunni og lengst í mesta útslaginu þá er ekki öll orkan í kerfinu færð milli skriðorku og stöðuorku í hverri sveiflu og því glatast orka úr kerfinu \\ Rétt er að athuga að þetta brýtur ekki gegn orkuvarðveislulögmálinu af því að sú orka sem hverfur (eða verður til þegar verið var að auka sveifluna) fer í vinnuna að færa massamiðjuna upp og niður róluna\\
+einnig sést í forritinu fyrir jákvæða örvun að þegar útslagið er orðið meira en $\frac{\pi}{2}$ þá er næsta sveifla á eftir ekki hærri þetta er vegna þess að þegar sveiflan er orðin þetta stór þá færist massamiðjan neðar við það að stytt sé í rólunni og því er minni stöðuorka til staðar til þess að breyta í skriðorku fyrir næstu sveiflu. (þessar upplýsingar hefðu verið vel þegnar fyrir um 15 árum síðan þegar undirritaður var að reyna að ná heilum hring í rólunum á leikvellinum)
+
 \section{Kúlupendúll}
  Jöfnuhneppið er einfaldlega það sama og gefið er í liðnum, en það má sjá í 
 \lstinputlisting[inputencoding=utf8]{kulupendulODE.m}
