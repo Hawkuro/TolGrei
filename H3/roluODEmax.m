@@ -1,4 +1,5 @@
 function y = roluODEmax (t,x)
+    % jöfnuhneppi sem lýsir rólu sem eykur sveifluna sem mest
     g = 1;
     l = 1;
     utslag = 0.8; 

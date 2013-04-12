@@ -1,4 +1,5 @@
 function y = roluODEmin (t,x)
+    %jöfnuhneppi sem lýsir rólu sem hægir hvað mest á sér
     g = 1;
     l = 1;
     utslag = 0.8; 

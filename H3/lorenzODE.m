@@ -1,7 +1,8 @@
 function y = lorenzODE (t,x,cond)
-%%pendulODE
-%Fall sem er jofnuhneppi fyrir nalgun a einfoldum pendul. tekur inn
-%t sem er timaskref og x sem eru nuverandi gildi theta og theta'
+    %fall sem er jöfnuhneppi lorenz kerfis með 
+    %t er breytan 
+    %x er vigur með upphafs og endaskilyrðum
+    %cond er vigur sem inniheldur stika lorenz kerfisins
     sigma = cond(1);
     r = cond(2);
     b = cond(3);
