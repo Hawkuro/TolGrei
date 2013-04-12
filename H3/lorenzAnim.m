@@ -26,8 +26,8 @@ for i = 1:fjoldi
     Sol(i, : , :) = adams_pc5(lorenzFunc,0,points(i,:),lotur,res*lotur*n);
 end
 
+whitebg('black')
 for t = 0:1/n:lotur
-    
     curr = res*floor(t*n)+1;
     % Teiknar inn eindirnar
     for i = 1:fjoldi
@@ -40,7 +40,7 @@ for t = 0:1/n:lotur
         plot3(x(:),y(:),z(:),plotcolors(i)) 
         hold on
     end
-    view(30+2*t,30+2*t)
+    view(30+3*t,30+3*t)
     grid %minor
     hold off
     %% Hreyfimynd
