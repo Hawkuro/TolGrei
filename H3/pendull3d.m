@@ -1,4 +1,4 @@
-function y = pendull3d(RHS,lotur,n,x0,omega,t0,res)
+function y = pendull3d(RHS,lotur,n,x0,t0,res)
 %% pendull.m
 % Skipanaskra sem byr til hreyfimynd af einfoldum penduli, tekur
 % inn ODE pendulsins sem RHS, hve margar lotur, hve margar myndir per lotu, upphafsgildin
@@ -31,13 +31,16 @@ pphi = @(t) simple(4, res*floor(t*n/(2*pi)) + 1);
 % fasahnitin i fylki
 %fasahnit = [theta(0);dtheta(0)];
 fasahnit = [theta(0);phi(0)];
+x = @(t) sin(theta(t))*cos(phi(t));
+y = @(t) sin(theta(t))*sin(phi(t));
+z = @(t) cos(theta(t));
 for t = 0:2*pi/n:2*pi*lotur
     %% Fasaritid
     subplot(2,1,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
     
-    fasahnit = [fasahnit(1,:) theta(t); fasahnit(2,:) phi(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
+    fasahnit = [fasahnit(1,:) x(t); fasahnit(2,:) y(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
     
-    plot(theta(t),phi(t),'ob', 'MarkerSize', 6) %Punkturinn i
+    plot(x(t),y(t),'ob', 'MarkerSize', 6) %Punkturinn i
                                                    %fasaritinu
      
     hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
@@ -58,12 +61,10 @@ for t = 0:2*pi/n:2*pi*lotur
     
     
     subplot(2,1,2)
-    plot3([0,sin(theta(t))*cos(phi(t))],[0,sin(theta(t))*sin(phi(t))],[0,cos(theta(t))],'-o','MarkerSize',8,'MarkerFaceColor','b') 
+    plot3([0,x(t)],[0,y(t)],[0,z(t)],'-o','MarkerSize',8,'MarkerFaceColor','b') 
     grid minor
-    
     axis([-1.2,1.2,-1.2,1.2,-1.2,1.2]) %Festir asana
-    %axis square %Thvingar matlab til ad hafa x og y asinn jafn
-                %langan
+    axis square %Thvingar matlab til ad hafa x og y asinn jafn
     hold off
     %% Hreyfimynd
     F = getframe(fig); %Naer i nyjasta ramman

@@ -1,7 +1,7 @@
 function y = kulupendulODE(t,x)
     m = 1;
     l = 1;
-    g = 1;
+    g = 9.82;
     om = 1/(m*l*l);
     
     y(1) = om*x(3);
