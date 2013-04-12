@@ -19,9 +19,9 @@ aviobj = avifile('lorenz.avi','compression','None','fps',16); %#ok<REMFF1>
 fig=figure;
 
 s = size(cond);
-n = s(2);
+fjoldi = s(2);
 %Byr til follin og reiknar ut nalgunina a theim
-for i = 1:n
+for i = 1:fjoldi
     lorenzFunc = @(t,x) lorenzODE(t,x,cond(:,i));
     Sol(i, : , :) = adams_pc5(lorenzFunc,0,points(i,:),lotur,res*lotur*n);
 end
@@ -30,7 +30,7 @@ for t = 0:1/n:lotur
     
     curr = res*floor(t*n)+1;
     % Teiknar inn eindirnar
-    for i = 1:2
+    for i = 1:fjoldi
         Solv = Sol(i,:,1:curr);
         plot3(Solv(1,1,curr),Solv(1,2,curr),Solv(1,3,curr), markercolors(i), 'MarkerSize', 6) 
         hold on
