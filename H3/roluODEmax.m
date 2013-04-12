@@ -1,5 +1,4 @@
 function y = roluODEmax (t,x)
-    %largest sum of sqrt(theta^2 + dtheta^2) is 6.7746
     g = 1;
     l = 1;
     utslag = 0.8; 

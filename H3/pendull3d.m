@@ -63,7 +63,8 @@ for t = 0:2*pi/n:2*pi*lotur
     %subplot(2,1,2)
     plot3([0,x(t)],[0,y(t)],[0,z(t)],'-o','MarkerSize',8,'MarkerFaceColor','b') 
     hold on
-    plot3(fasahnit(1,:),fasahnit(2,:),zeros(1,length(fasahnit(2,:)))-1,'r','MarkerSize',8,'MarkerFaceColor','r')
+    plot3(fasahnit(1,:),fasahnit(2,:),zeros(1,length(fasahnit(2,:)))-1,'r', ...
+          'MarkerSize',8,'MarkerFaceColor','r')
    % hold off
     grid %minor
     axis([-1.2,1.2,-1.2,1.2,-1.2,1.2]) %Festir asana

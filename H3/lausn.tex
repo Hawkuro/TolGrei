@@ -50,7 +50,7 @@ Sjá myndir \ref{fig:adamspc5plot} og \ref{fig:adamspc5err}.
   \begin{center}
     \includegraphics[scale=0.5]{adamspc5plot.eps}
   \end{center}
-  \caption{Fallið sem prófa átti í 1, auk nálgun þess með adams\_pc5 sem rauttbrotastrik}
+  \caption{Fallið sem prófa átti í 1, auk nálgun þess með adams\_pc5 sem rautt brotastrik}
   \label{fig:adamspc5plot}
 \end{figure}
 \begin{figure}[h]
@@ -93,10 +93,32 @@ Til þess að svo gera hreyfimyndina þar sem útslagið er stórt var notaður 
 \lstinputlisting[inputencoding=utf8]{hr2.m}
 
 \section{Róla}
+  Við athugum að jafnan er eins og í 2, nema nú er lengdin auk þess fall af t. því fæst jöfnuhneppið
+  $$\left\{ \begin{array}{l} y(t) = \theta'(t) \\ y'(t) = \theta''(t) = - \frac{g}{s(t)} \cdot \sin{\theta(t)} \end{array} \right.$$ 
+  en $$s(t) = l + a*(cos \omega t + \varphi),$$
+  þar sem l er lengdin, a er ústlagið, $\omega$ er horntíðnin og $\varphi$ er fasahliðrunin.
+  
+  Eftirfarandi tvö föll voru gerð til þess að nota með adams\_pc5, en fyrra er fyrir rólu sem er að hægja á sér og seinna er fyrir rólu sem er að hámarka útslagið. Munurinn liggur í mismunandi fasahliðrunum.
+  \lstinputlisting[inputencoding=utf8]{roluODEmin.m}
+  \lstinputlisting[inputencoding=utf8]{roluODEmax.m}
 
+  Til þess svo að teikna meðfylgjandi myndbönd var notast við eftirfarandi skrá og pendull.m úr fyrri lið.
+  \lstinputlisting[inputencoding=utf8]{hr3.m}.
+  
+  Útslagið örvaðist mest þegar $\omega = 1/T$ eins og gefið var í 3 og fasahornið var $\pi$,
+  en ef $\varphi = 0$, þá hægði maður á rólunni. Munurinn liggur í hvenær maður styttir og lengir bandið, en ef fasahornið er 0, þá er mesta lengingin í miðjunni og minnst í endapunktunum,
+  en öfugt er farið þegar hægt er á rólunni. Útskýringin á þessu er að maður er að nýta sér  hröðunina sem þyngdarkrafturinn veitir, en með því að vera að lengja á meðan maður dettur er maður í raun að detta meira beint niður.
+  %%LAGA! SENNILEGA EKKI RÉTT!
 \section{Kúlupendúll}
+ Jöfnuhneppið er einfaldlega það sama og gefið er í liðnum, en það má sjá í 
+\lstinputlisting[inputencoding=utf8]{kulupendulODE.m}
 
-\section{Sólkerfi}
+ Eftirfarandi forritsbútur var notaður til að búa til myndbandið.
+\lstinputlisting[inputencoding=utf8]{hr4.m}
+ Það var gert með hjálp eftirfarandi falls, sem er pendúlsteiknifallið breytt til þess að ráða við þrívídd.
+\lstinputlisting[inputencoding=utf8]{pendull3d.m}
+
+\section{Lorenz}
 \vspace{20 mm}
 Að skýrsluni unnu :
 \hspace{0.5cm} \makebox[1.5in]{\hrulefill}
