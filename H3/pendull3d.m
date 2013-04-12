@@ -33,7 +33,7 @@ pphi = @(t) simple(4, res*floor(t*n/(2*pi)) + 1);
 fasahnit = [theta(0);phi(0)];
 x = @(t) sin(theta(t))*cos(phi(t));
 y = @(t) sin(theta(t))*sin(phi(t));
-z = @(t) cos(theta(t));
+z = @(t) -cos(theta(t)); %theta er midad vid ofugan z-as en venjulega
 for t = 0:2*pi/n:2*pi*lotur
     %% Fasaritid
     subplot(2,1,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
