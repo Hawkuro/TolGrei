@@ -1,5 +1,5 @@
 function y = lorenzODE (t,x,cond)
-    %fall sem er jöfnuhneppi lorenz kerfis með 
+    %fall sem er jofnuhneppi lorenz kerfis
     %t er breytan 
     %x er vigur með upphafs og endaskilyrðum
     %cond er vigur sem inniheldur stika lorenz kerfisins
