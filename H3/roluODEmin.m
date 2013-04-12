@@ -1,5 +1,5 @@
-function y = roluODE (t,x)
-    %g = 9.82;
+function y = roluODEmin (t,x)
+    %largest sum of sqrt(theta^2 + dtheta^2) is 2.4723
     g = 1;
     l = 1;
     utslag = 0.8; 

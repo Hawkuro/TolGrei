@@ -26,6 +26,7 @@ dtheta = @(t) -omega*theta0*sin(omega*(t-t0))+ theta1*cos(omega*(t- ...
 
 %simple = adams_pc5('pendulODE',t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
 simple = adams_pc5(RHS,t0,[theta0,theta1],2*pi*lotur,res*lotur*n);
+y = (max(simple(1,:))^2 + max(simple(2,:))^2)
 thetasimple = @(t)  simple(1, res*floor(t*n/(2*pi)) + 1);
 dthetasimple = @(t) simple(2, res*floor(t*n/(2*pi)) + 1);
 %%
