@@ -45,7 +45,21 @@
 \subsection{}
 \lstinputlisting[inputencoding=utf8]{adams_pc5plot.m}
 \lstinputlisting[inputencoding=utf8]{adams_pc5test.m}
-%hér á að bæta inn ferilteikningum af prófunarfallinu
+Sjá myndir \ref{fig:adamspc5plot} og \ref{fig:adamspc5err}.
+\begin{figure}[]
+  \begin{center}
+    \includegraphics[scale=0.5]{adamspc5plot.eps}
+  \end{center}
+  \caption{Fallið sem prófa átti í 1, auk nálgun þess með adams\_pc5 sem rauttbrotastrik}
+  \label{fig:adamspc5plot}
+\end{figure}
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{adamspc5err.eps}
+  \end{center}
+  \caption{Skekkjan milli nálgunar þess með adams\_pc5 og fallsins sem prófa átti í 1 sem fall af t}
+  \label{fig:adamspc5err}
+\end{figure}
 \subsection{}
 til þess að fá heildarskekkju minni en $10^{-4}$ þurfti $h=\frac{1}{50000}=2*10^{-5}$
 
