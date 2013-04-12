@@ -33,24 +33,24 @@ pphi = @(t) simple(4, res*floor(t*n/(2*pi)) + 1);
 fasahnit = [theta(0);phi(0)];
 x = @(t) sin(theta(t))*cos(phi(t));
 y = @(t) sin(theta(t))*sin(phi(t));
-z = @(t) cos(theta(t));
+z = @(t) -cos(theta(t)); %theta er midad vid ofugan z-as en venjulega
 for t = 0:2*pi/n:2*pi*lotur
     %% Fasaritid
-    subplot(2,1,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
+    %subplot(2,1,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
     
     fasahnit = [fasahnit(1,:) x(t); fasahnit(2,:) y(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
     
-    plot(x(t),y(t),'ob', 'MarkerSize', 6) %Punkturinn i
+    %plot(x(t),y(t),'ob', 'MarkerSize', 6) %Punkturinn i
                                                    %fasaritinu
      
-    hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
+    %hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
     
-    plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
-    hold on 
-    axis([-1.2,1.2,-1.2,1.2])
-    axis square
+    %plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
+    %hold on 
+    %axis([-1.2,1.2,-1.2,1.2])
+    %axis square
 
-    hold off 
+    %hold off 
     %% Pendullinn
     %Skiptir myndaflotinum i 2x1 fylki og segir matlab ad nota fyrsta stakid
     % Teikniskipun fyrir pendulinn: teiknum linu fra [0,0] (festipunktur) 
@@ -60,9 +60,12 @@ for t = 0:2*pi/n:2*pi*lotur
     % 'MarkerFaceColor' akvardar lit endapunktana
     
     
-    subplot(2,1,2)
+    %subplot(2,1,2)
     plot3([0,x(t)],[0,y(t)],[0,z(t)],'-o','MarkerSize',8,'MarkerFaceColor','b') 
-    grid minor
+    hold on
+    plot3(fasahnit(1,:),fasahnit(2,:),zeros(1,length(fasahnit(2,:)))-1,'r','MarkerSize',8,'MarkerFaceColor','r')
+   % hold off
+    grid %minor
     axis([-1.2,1.2,-1.2,1.2,-1.2,1.2]) %Festir asana
     axis square %Thvingar matlab til ad hafa x og y asinn jafn
     hold off
