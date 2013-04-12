@@ -1,9 +1,15 @@
-function y = lorenzAnim(RHS,lotur,n,x0,t0,res)
-%% pendull.m
-% Skipanaskra sem byr til hreyfimynd af einfoldum penduli, tekur
-% inn ODE pendulsins sem RHS, hve margar lotur, hve margar myndir per lotu, upphafsgildin
-% theta0,theta1, omega og t0, og hve margrfaltfleiri itranir af
-% nalgun eru en rommum.
+function y = lorenzAnim(lotur,n,res,cond,points,markercolors,plotcolors)
+%% lorenzAnim.m
+% Skipanaskra sem byr til hreyfimynd af lorenz attractor,
+% tekur inn hve lengi a ad keyra, hve margir rammar a sekundu,
+% hversu margfalt meira er renderad af gildum, upphafsgildi
+% einda a formi lista [[sigma1;r1;b1], [sigma2;r2;b2]] etc
+% upphafs stadsetningar þeirra a formi
+% [[x0,y0,z0];[x0_2,y0_2,z0_2];...] etc sama lengd og
+% upphafsskilirdin
+% og svo tvo vigra markercolors og plotcolors sem segja til um
+% litina a eindunm og ferlunum sem thaer skilja eftir sig.
+
 aviobj = avifile('lorenz.avi','compression','None','fps',16); %#ok<REMFF1>
 % Segir til um nafn myndbandsins, thjoppun og fjolda ramma a sek.
 % Windows notendur aettu ad breyta 'None' i 'Indeo5' eda i einhvern annan
@@ -11,59 +17,31 @@ aviobj = avifile('lorenz.avi','compression','None','fps',16); %#ok<REMFF1>
 % Mac, Linux, BSD og onnur styrikerfi thurfa ad thjappa myndbandid
 % handvirkt utan matlab, t.d med ffmpeg.
 fig=figure;
-%% Fastar
-%lotur = 5;          %Fjoldi lota til ad reikna
-%n = 25;             %Fjoldi mynda i hverri lotu               
-theta0 = 2;         %theta(t0)
-theta1 = 0;         %theta'(t0)
-%omega = 1;          %Hornhradi
-%t0 = 0;
-%res = 6;
-%% Jofnurnar
 
-simple = adams_pc5(RHS,t0,x0,lotur,res*lotur*n);
-x = @(t)  simple(1, res*floor(t*n) + 1);
-y = @(t)  simple(2, res*floor(t*n) + 1);
-z = @(t) simple(3, res*floor(t*n) + 1);
-%%
-% Thar sem vid hreinsum myndina i hverju skrefi ta thurfum vid ad geyma
-% fasahnitin i fylki
-%fasahnit = [theta(0);dtheta(0)];
-hnit = [x(0);y(0);z(0)];
+s = size(cond);
+n = s(2);
+%Byr til follin og reiknar ut nalgunina a theim
+for i = 1:n
+    lorenzFunc = @(t,x) lorenzODE(t,x,cond(:,i));
+    Sol(i, : , :) = adams_pc5(lorenzFunc,0,points(i,:),lotur,res*lotur*n);
+end
+
 for t = 0:1/n:lotur
-    %% Fasaritid
-    %subplot(2,1,1) %Skipar matlab ad nota seinni hlutan af myndflotinum
     
-    hnit = [hnit(1,:) x(t); hnit(2,:) y(t); hnit(3,:) z(t)]; %Baetir nyju fasahnitunum vid thau gomlu.
-    
-    %plot(x(t),y(t),'ob', 'MarkerSize', 6) %Punkturinn i
-                                                   %fasaritinu
-     
-    %hold on % Thurfum ad setja "hold on" her svo vid yfirskrifum ekki linuna i fasaritnu bara med punktinum
-    
-    %plot(fasahnit(1,:),fasahnit(2,:),'b') % Linan i fasaritinu
-    %hold on 
-    %axis([-1.2,1.2,-1.2,1.2])
-    %axis square
-
-    %hold off 
-    %% Pendullinn
-    %Skiptir myndaflotinum i 2x1 fylki og segir matlab ad nota fyrsta stakid
-    % Teikniskipun fyrir pendulinn: teiknum linu fra [0,0] (festipunktur) 
-    % i [sin(theta(t)),-cos(theta(t))] sem er stadsetning lodsins
-    % '-o' segir ad vid aetlum ad teikna linu med hringlaga endapunkta
-    % 'MarkerSize' setur staerd endapunktanna
-    % 'MarkerFaceColor' akvardar lit endapunktana
-    
-    
-    %subplot(2,1,2)
-    plot3(hnit(1,:),hnit(2,:),hnit(3,:)) 
-    view(2)
-    hold on
-   % hold off
+    curr = res*floor(t*n)+1;
+    % Teiknar inn eindirnar
+    for i = 1:2
+        Solv = Sol(i,:,1:curr);
+        plot3(Solv(1,1,curr),Solv(1,2,curr),Solv(1,3,curr), markercolors(i), 'MarkerSize', 6) 
+        hold on
+        x = Solv(1,1,:);
+        y = Solv(1,2,:);
+        z = Solv(1,3,:);
+        plot3(x(:),y(:),z(:),plotcolors(i)) 
+        hold on
+    end
+    view(30+2*t,30+2*t)
     grid %minor
-         %axis([-1.2,1.2,-1.2,1.2,-1.2,1.2]) %Festir asana
-         %axis square %Thvingar matlab til ad hafa x og y asinn jafn
     hold off
     %% Hreyfimynd
     F = getframe(fig); %Naer i nyjasta ramman
