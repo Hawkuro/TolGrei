@@ -1,4 +1,4 @@
-function y = lorenzAnim(lotur,n,res,cond,points,markercolors,plotcolors)
+function y = lorenzAnim(nafn,xspeed,yspeed,lotur,n,res,cond,points,markercolors,plotcolors)
 %% lorenzAnim.m
 % Skipanaskra sem byr til hreyfimynd af lorenz attractor,
 % tekur inn hve lengi a ad keyra, hve margir rammar a sekundu,
@@ -10,7 +10,7 @@ function y = lorenzAnim(lotur,n,res,cond,points,markercolors,plotcolors)
 % og svo tvo vigra markercolors og plotcolors sem segja til um
 % litina a eindunm og ferlunum sem thaer skilja eftir sig.
 
-aviobj = avifile('lorenz.avi','compression','None','fps',16); %#ok<REMFF1>
+aviobj = avifile(nafn,'compression','None','fps',16); %#ok<REMFF1>
 % Segir til um nafn myndbandsins, thjoppun og fjolda ramma a sek.
 % Windows notendur aettu ad breyta 'None' i 'Indeo5' eda i einhvern annan
 % compression moguleika.
@@ -26,8 +26,13 @@ for i = 1:fjoldi
     Sol(i, : , :) = adams_pc5(lorenzFunc,0,points(i,:),lotur,res*lotur*n);
 end
 
+axisCoords =  [min(min(Sol(:,1,:)))-3, max(max(Sol(:,1,:)))+3, min(min(Sol(:,2,:)))-3, max(max(Sol(:,2,:)))+3, min(min(Sol(:,3,:)))-3, max(max(Sol(:,3,:)))+3]
+    
+
+
 whitebg('black')
 for t = 0:1/n:lotur
+    axis(axisCoords)
     curr = res*floor(t*n)+1;
     % Teiknar inn eindirnar
     for i = 1:fjoldi
@@ -39,8 +44,9 @@ for t = 0:1/n:lotur
         z = Solv(1,3,:);
         plot3(x(:),y(:),z(:),plotcolors(i)) 
         hold on
+        axis(axisCoords)
     end
-    view(30+3*t,30+3*t)
+    view(30+xspeed*t,30+yspeed*t)
     grid %minor
     hold off
     %% Hreyfimynd
