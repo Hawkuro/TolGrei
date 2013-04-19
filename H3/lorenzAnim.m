@@ -26,7 +26,7 @@ for i = 1:fjoldi
     Sol(i, : , :) = adams_pc5(lorenzFunc,0,points(i,:),lotur,res*lotur*n);
 end
 
-axisCoords =  [min(min(Sol(:,1,:)))-3, max(max(Sol(:,1,:)))+3, min(min(Sol(:,2,:)))-3, max(max(Sol(:,2,:)))+3, min(min(Sol(:,3,:)))-3, max(max(Sol(:,3,:)))+3]
+axisCoords =  [min(min(Sol(:,1,:)))-3, max(max(Sol(:,1,:)))+3, min(min(Sol(:,2,:)))-3, max(max(Sol(:,2,:)))+3, min(min(Sol(:,3,:)))-3, max(max(Sol(:,3,:)))+3];
     
 
 
