@@ -1,4 +1,4 @@
-function y = lorenzAnim(nafn,xspeed,yspeed,lotur,n,res,cond,points,markercolors,plotcolors)
+function y = lorenzAnim(nafn,viewinit,viewspeed,lotur,n,res,cond,points,markercolors,plotcolors)
 %% lorenzAnim.m
 % Skipanaskra sem byr til hreyfimynd af lorenz attractor,
 % tekur inn hve lengi a ad keyra, hve margir rammar a sekundu,
@@ -46,7 +46,7 @@ for t = 0:1/n:lotur
         hold on
         axis(axisCoords)
     end
-    view(30+xspeed*t,30+yspeed*t)
+    view(viewinit(1)+viewspeed(1)*t,viewinit(2)+viewspeed(2)*t)
     grid %minor
     hold off
     %% Hreyfimynd
