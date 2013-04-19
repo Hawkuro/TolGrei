@@ -46,7 +46,7 @@ for t = 0:1/n:lotur
         hold on
         axis(axisCoords)
     end
-    view(viewinit(1)+viewspeed(1)*t,viewinit(2)+viewspeed(2)*t)
+    view(viewinit(1)+uint32(viewspeed(1)*t),viewinit(2)+uint32(viewspeed(2)*t))
     grid %minor
     hold off
     %% Hreyfimynd
